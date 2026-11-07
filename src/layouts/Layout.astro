@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'NicoGuzman.dev | Webs, Automatización IA y Sistemas para Negocios en Argentina',
+  description = 'Potenciá tu negocio con páginas web listas en 48 hs, bots de WhatsApp con Inteligencia Artificial y sistemas ERP multi-sucursal integrados con Mercado Pago.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#5956E9" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://v2.nicoguzmandev.com" />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Google Fonts: Poppins (Headings) + DM Sans (Body) as in Dr.Nube -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Poppins:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white text-[#27272E] antialiased selection:bg-[#5956E9] selection:text-white overflow-x-hidden">
+    <slot />
+
+    <!-- Floating WhatsApp Pill Action -->
+    <a
+      href="https://wa.me/5491100000000?text=Hola%20Nico!%20Vi%20tu%20web%20y%20quiero%20consultar%20para%20digitalizar%20mi%20negocio."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Consultar por WhatsApp"
+      class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full bg-[#27272E] px-5 py-3.5 text-sm font-semibold text-white shadow-drnube-float transition-all duration-300 hover:-translate-y-1 hover:bg-[#5956E9]"
+    >
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+      </span>
+      <span>WhatsApp Directo</span>
+    </a>
+
+    <!-- Scroll Reveal Observer -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>

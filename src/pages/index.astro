@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroTilt from '../components/HeroTilt.tsx';
+import BigMetricBanner from '../components/BigMetricBanner.astro';
+import AlternatingFeatures from '../components/AlternatingFeatures.tsx';
+import PricingPlans from '../components/PricingPlans.tsx';
+import CtaFooter from '../components/CtaFooter.astro';
+---
+
+<Layout>
+  <Header />
+  <main>
+    <HeroTilt client:load />
+    <BigMetricBanner />
+    <AlternatingFeatures client:visible />
+    <PricingPlans client:visible />
+    <CtaFooter />
+  </main>
+</Layout>
