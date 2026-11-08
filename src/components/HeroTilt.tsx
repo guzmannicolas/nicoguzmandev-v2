@@ -24,30 +24,68 @@ export default function HeroTilt() {
 
   return (
     <section className="relative overflow-hidden bg-drnube-mesh pt-28 pb-20 lg:pt-36 lg:pb-28">
-      {/* Decorative soft background circles like Dr.Nube */}
+      {/* Dr.Nube Rellax Floating Pastel Spheres (move with scroll) */}
+      <div
+        data-parallax-speed="1.8"
+        data-parallax-x="0.5"
+        className="pointer-events-none absolute top-24 left-[6%] h-14 w-14 rounded-full bg-[#FAB8C4]/60 blur-[1px]"
+      />
+      <div
+        data-parallax-speed="-1.5"
+        data-parallax-x="-0.6"
+        className="pointer-events-none absolute top-40 right-[8%] h-24 w-24 rounded-full bg-[#FFDC60]/50"
+      />
+      <div
+        data-parallax-speed="2.2"
+        className="pointer-events-none absolute bottom-12 left-[42%] h-16 w-16 rounded-full bg-[#EBEAFB] border border-[#5956E9]/20"
+      />
       <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#EBEAFB]/70 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 left-10 h-72 w-72 rounded-full bg-[#FAB8C4]/25 blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-10">
-          {/* Left Column: High-Conversion Copy */}
+          {/* Left Column: Masked Title Reveal + Elastic Scale-Y Copy */}
           <div className="lg:col-span-6 space-y-6 text-left">
-            <div className="inline-flex items-center gap-2.5 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]">
+            <div
+              data-dr-anim="scale-y"
+              className="inline-flex items-center gap-2.5 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]"
+            >
               <span className="h-2 w-2 rounded-full bg-[#5956E9] animate-pulse" />
               <span>Tecnología para Negocios en Argentina</span>
             </div>
 
-            <h1 className="font-heading text-4xl font-extrabold leading-[1.12] tracking-tight text-[#27272E] sm:text-5xl lg:text-[54px]">
-              Llevá tu negocio al siguiente nivel,{' '}
-              <span className="text-[#5956E9]">automatizá ventas</span> y ganá tiempo.
+            {/* Dr.Nube Masked Line-by-Line Title Reveal */}
+            <h1 className="title-mask-container is-inview font-heading text-4xl font-extrabold leading-[1.12] tracking-tight text-[#27272E] sm:text-5xl lg:text-[54px]">
+              <span className="title-mask-box">
+                <span className="title-mask-text">Llevá tu negocio al</span>
+              </span>
+              <span className="title-mask-box">
+                <span className="title-mask-text">
+                  siguiente nivel,{' '}
+                  <span className="text-[#5956E9]">automatizá</span>
+                </span>
+              </span>
+              <span className="title-mask-box">
+                <span className="title-mask-text">
+                  <span className="text-[#5956E9]">ventas</span> y ganá tiempo.
+                </span>
+              </span>
             </h1>
 
-            <p className="max-w-xl text-lg leading-relaxed text-[#525260] sm:text-xl">
+            <p
+              data-dr-anim="scale-y"
+              data-dr-delay="200"
+              className="max-w-xl text-lg leading-relaxed text-[#525260] sm:text-xl"
+            >
               Desde páginas web listas para vender en 48 horas hasta bots de WhatsApp con IA que agendan turnos y cobran señas por Mercado Pago sin que tengas que tocar el teléfono.
             </p>
 
-            {/* Primary & Secondary CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            {/* Primary & Secondary CTAs with Elastic Scale-Y */}
+            <div
+              data-dr-anim="scale-y"
+              data-dr-delay="300"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
+            >
               <a
                 href="#planes"
                 className="inline-flex items-center justify-center rounded-full bg-[#5956E9] px-8 py-4 text-base font-bold text-white shadow-drnube-btn transition-all duration-300 hover:-translate-y-1 hover:bg-[#4441C8]"
@@ -63,7 +101,11 @@ export default function HeroTilt() {
             </div>
 
             {/* Key Value Pills */}
-            <div className="pt-4 grid grid-cols-3 gap-3 border-t border-slate-200/70 max-w-lg">
+            <div
+              data-dr-anim="scale-y"
+              data-dr-delay="400"
+              className="pt-4 grid grid-cols-3 gap-3 border-t border-slate-200/70 max-w-lg"
+            >
               <div>
                 <p className="font-heading text-2xl font-extrabold text-[#27272E]">48 hs</p>
                 <p className="text-xs font-medium text-[#525260]">Entrega Web Express</p>
@@ -79,12 +121,12 @@ export default function HeroTilt() {
             </div>
           </div>
 
-          {/* Right Column: Interactive 3D Tilt Stage with Floating Satellite Cards */}
+          {/* Right Column: Interactive 3D Tilt Stage + Multi-Piece Scroll Assembly */}
           <div
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="lg:col-span-6 relative flex items-center justify-center py-6 lg:py-4"
+            className="dr-assembly-stage is-inview lg:col-span-6 relative flex items-center justify-center py-6 lg:py-4"
             style={{ perspective: '1100px' }}
           >
             <div
@@ -94,8 +136,8 @@ export default function HeroTilt() {
                 transformStyle: 'preserve-3d',
               }}
             >
-              {/* Central SaaS Dashboard Card */}
-              <div className="relative rounded-3xl bg-white p-6 sm:p-7 shadow-drnube border border-slate-100">
+              {/* Piece 1 (Base): Central SaaS Dashboard Card */}
+              <div className="piece-base relative rounded-3xl bg-white p-6 sm:p-7 shadow-drnube border border-slate-100">
                 {/* Top Window Bar & Branch Switcher */}
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-5 border-b border-slate-100">
                   <div className="flex items-center gap-2">
@@ -287,51 +329,57 @@ export default function HeroTilt() {
                 )}
               </div>
 
-              {/* Floating Satellite Card 1 (Top Right - Mercado Pago) */}
+              {/* Piece 2 (Top Right Satellite): Mercado Pago */}
               <div
-                className="animate-float-1 hidden sm:block absolute -top-7 -right-6 z-20 rounded-2xl bg-white px-4 py-3 shadow-drnube-float border border-[#EBEAFB]"
+                className="piece-top-right hidden sm:block absolute -top-7 -right-6 z-20"
                 style={{ transform: 'translateZ(55px)' }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EBEAFB] font-heading text-xs font-extrabold text-[#5956E9]">
-                    MP
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">
-                      Seña Acreditada
-                    </p>
-                    <p className="font-heading text-sm font-extrabold text-[#27272E]">
-                      +$ 15.000 ARS · Turno 17:30
-                    </p>
+                <div className="animate-float-1 rounded-2xl bg-white px-4 py-3 shadow-drnube-float border border-[#EBEAFB]">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EBEAFB] font-heading text-xs font-extrabold text-[#5956E9]">
+                      MP
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">
+                        Seña Acreditada
+                      </p>
+                      <p className="font-heading text-sm font-extrabold text-[#27272E]">
+                        +$ 15.000 ARS · Turno 17:30
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Satellite Card 2 (Bottom Left - Ahorro Operativo) */}
+              {/* Piece 3 (Bottom Left Satellite): Conversión */}
               <div
-                className="animate-float-2 hidden sm:block absolute -bottom-7 -left-6 z-20 rounded-2xl bg-[#27272E] px-4 py-3.5 text-white shadow-drnube-float"
+                className="piece-bottom-left hidden sm:block absolute -bottom-7 -left-6 z-20"
                 style={{ transform: 'translateZ(65px)' }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FFDC60] font-heading text-xs font-extrabold text-[#27272E]">
-                    +42%
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-semibold text-[#999FAE]">Conversión de Clientes</p>
-                    <p className="font-heading text-sm font-bold text-white">
-                      Cero consultas perdidas
-                    </p>
+                <div className="animate-float-2 rounded-2xl bg-[#27272E] px-4 py-3.5 text-white shadow-drnube-float">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FFDC60] font-heading text-xs font-extrabold text-[#27272E]">
+                      +42%
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-semibold text-[#999FAE]">Conversión de Clientes</p>
+                      <p className="font-heading text-sm font-bold text-white">
+                        Cero consultas perdidas
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Satellite Pill 3 (Top Left - Google Calendar / Sync) */}
+              {/* Piece 4 (Top Left Satellite Pill): Google Calendar */}
               <div
-                className="animate-float-3 hidden md:flex absolute -top-5 left-6 z-20 items-center gap-2 rounded-full bg-[#FAB8C4] px-3.5 py-1.5 text-xs font-extrabold text-[#27272E] shadow-md"
+                className="piece-top-left hidden md:block absolute -top-5 left-6 z-20"
                 style={{ transform: 'translateZ(40px)' }}
               >
-                <span className="h-2 w-2 rounded-full bg-[#27272E]" />
-                <span>Sincronizado con Google Calendar</span>
+                <div className="animate-float-3 flex items-center gap-2 rounded-full bg-[#FAB8C4] px-3.5 py-1.5 text-xs font-extrabold text-[#27272E] shadow-md">
+                  <span className="h-2 w-2 rounded-full bg-[#27272E]" />
+                  <span>Sincronizado con Google Calendar</span>
+                </div>
               </div>
             </div>
           </div>

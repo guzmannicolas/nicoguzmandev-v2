@@ -37,6 +37,14 @@ const {
     />
   </head>
   <body class="bg-white text-[#27272E] antialiased selection:bg-[#5956E9] selection:text-white overflow-x-hidden">
+    <!-- Top Scroll Progress Bar -->
+    <div class="fixed top-0 left-0 right-0 z-[60] h-1 bg-transparent pointer-events-none">
+      <div
+        id="scroll-progress-bar"
+        class="h-full bg-gradient-to-r from-[#5956E9] via-[#FAB8C4] to-[#FFDC60] w-0 transition-[width] duration-75"
+      ></div>
+    </div>
+
     <slot />
 
     <!-- Floating WhatsApp Pill Action -->
@@ -54,21 +62,121 @@ const {
       <span>WhatsApp Directo</span>
     </a>
 
-    <!-- Scroll Reveal Observer -->
+    <!-- Dr.Nube Scroll Engine:
+         1. IntersectionObserver for [data-dr-anim], .dr-assembly-stage, and .title-mask-container (re-triggers on scroll up/down like AOS)
+         2. Rellax-style continuous scroll parallax for [data-parallax-speed] and [data-parallax-x]
+         3. Animated number counters [data-count-to] when entering viewport
+    -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
-        const observer = new IntersectionObserver(
+        // 1. Scroll Reveal & Multi-Piece UI Assembly Observer
+        const initObserver = () => {
+          const animatedNodes = document.querySelectorAll(
+            '[data-dr-anim], .dr-assembly-stage, .title-mask-container, .reveal-up'
+          );
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-inview', 'is-visible');
+                } else if (entry.boundingClientRect.top > 0) {
+                  // When scrolling back up above the element, reset so it animates again on scroll down (like Dr.Nube AOS)
+                  entry.target.classList.remove('is-inview', 'is-visible');
+                }
+              });
+            },
+            { threshold: 0.14, rootMargin: '0px 0px -45px 0px' }
+          );
+
+          animatedNodes.forEach((node) => observer.observe(node));
+        };
+
+        // Run initially and after React hydration
+        initObserver();
+        setTimeout(initObserver, 350);
+        setTimeout(initObserver, 1000);
+
+        // 2. Number Counter Observer
+        const counterObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
+              const el = entry.target;
+              if (entry.isIntersecting && !el.dataset.counted) {
+                el.dataset.counted = 'true';
+                const target = parseFloat(el.dataset.countTo || '0');
+                const prefix = el.dataset.countPrefix || '';
+                const suffix = el.dataset.countSuffix || '';
+                const decimals = parseInt(el.dataset.countDecimals || '0', 10);
+                const duration = 1100;
+                const start = performance.now();
+
+                const step = (now) => {
+                  const progress = Math.min((now - start) / duration, 1);
+                  const eased = 1 - Math.pow(1 - progress, 3);
+                  const current = (target * eased).toFixed(decimals);
+                  el.textContent = `${prefix}${current}${suffix}`;
+                  if (progress < 1) {
+                    requestAnimationFrame(step);
+                  }
+                };
+                requestAnimationFrame(step);
+              } else if (!entry.isIntersecting && entry.boundingClientRect.top > 0) {
+                delete el.dataset.counted;
               }
             });
           },
-          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+          { threshold: 0.3 }
         );
 
-        document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
+        const bindCounters = () => {
+          document.querySelectorAll('[data-count-to]').forEach((el) => counterObserver.observe(el));
+        };
+        bindCounters();
+        setTimeout(bindCounters, 500);
+
+        // 3. Continuous Rellax & simpleParallax Scroll Loop
+        const progressBar = document.getElementById('scroll-progress-bar');
+        let ticking = false;
+
+        const updateParallax = () => {
+          const scrollY = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (progressBar && docHeight > 0) {
+            const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+            progressBar.style.width = `${pct}%`;
+          }
+
+          // Vertical & Horizontal Rellax elements
+          document.querySelectorAll('[data-parallax-speed]').forEach((el) => {
+            const speed = parseFloat(el.getAttribute('data-parallax-speed') || '0');
+            const speedX = parseFloat(el.getAttribute('data-parallax-x') || '0');
+            const rotateSpeed = parseFloat(el.getAttribute('data-parallax-rotate') || '0');
+            const rect = el.getBoundingClientRect();
+            const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+
+            const yOffset = centerOffset * speed * -0.18;
+            const xOffset = centerOffset * speedX * -0.15;
+            const rot = centerOffset * rotateSpeed * 0.02;
+
+            el.style.transform = `translate3d(${xOffset.toFixed(1)}px, ${yOffset.toFixed(1)}px, 0) rotate(${rot.toFixed(1)}deg)`;
+          });
+
+          ticking = false;
+        };
+
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (!ticking) {
+              window.requestAnimationFrame(updateParallax);
+              ticking = true;
+            }
+          },
+          { passive: true }
+        );
+
+        updateParallax();
       });
     </script>
   </body>

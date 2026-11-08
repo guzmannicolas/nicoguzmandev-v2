@@ -27,7 +27,191 @@
   }
 }
 
-/* Dr.Nube Continuous Floating Keyframes */
+/* ============================================================================
+   1. DR.NUBE SIGNATURE ELASTIC SCROLL ANIMATIONS (data-dr-anim)
+   Directly modeled on landing_drnube.css:
+   - animation-scale-y: translateY(44px) scaleY(1.38) -> translateY(0) scaleY(1)
+   - animation-scale-x-left / right: translateX(+-55px) scaleX(1.12)
+   - animation-translate-y: translateY(50px) -> translateY(0)
+============================================================================ */
+
+[data-dr-anim] {
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: 0.78s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Elastic Vertical Stretch (Dr.Nube's main text & block effect) */
+[data-dr-anim="scale-y"] {
+  opacity: 0;
+  transform-origin: center bottom;
+  transform: translateY(48px) scaleY(1.36);
+}
+
+[data-dr-anim="scale-y"].is-inview {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+}
+
+/* Elastic Horizontal Left Enter */
+[data-dr-anim="scale-x-left"] {
+  opacity: 0;
+  transform-origin: left center;
+  transform: translateX(-60px) scaleX(1.12);
+}
+
+[data-dr-anim="scale-x-left"].is-inview {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+}
+
+/* Elastic Horizontal Right Enter */
+[data-dr-anim="scale-x-right"] {
+  opacity: 0;
+  transform-origin: right center;
+  transform: translateX(60px) scaleX(1.12);
+}
+
+[data-dr-anim="scale-x-right"].is-inview {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+}
+
+/* Vertical Rise with Scale Pop (Pricing Cards & Feature Tiles) */
+[data-dr-anim="translate-y"] {
+  opacity: 0;
+  transform: translateY(56px) scale(0.95);
+}
+
+[data-dr-anim="translate-y"].is-inview {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Staggered Delays */
+[data-dr-delay="100"].is-inview { transition-delay: 0.10s; }
+[data-dr-delay="200"].is-inview { transition-delay: 0.20s; }
+[data-dr-delay="300"].is-inview { transition-delay: 0.30s; }
+[data-dr-delay="400"].is-inview { transition-delay: 0.40s; }
+[data-dr-delay="500"].is-inview { transition-delay: 0.50s; }
+
+/* ============================================================================
+   2. DR.NUBE MASKED LINE-BY-LINE TITLE REVEAL (.title__box / .title__text)
+============================================================================ */
+.title-mask-box {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.title-mask-text {
+  display: block;
+  opacity: 0;
+  transform: translateY(112%);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.55s ease-out;
+}
+
+.is-inview .title-mask-box:nth-child(1) .title-mask-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
+}
+
+.is-inview .title-mask-box:nth-child(2) .title-mask-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.20s;
+}
+
+.is-inview .title-mask-box:nth-child(3) .title-mask-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.35s;
+}
+
+.is-inview .title-mask-box:nth-child(4) .title-mask-text {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.50s;
+}
+
+/* ============================================================================
+   3. DR.NUBE MULTI-PIECE EXPLODED UI ASSEMBLY (.dr-assembly-stage)
+   Modeled on .layouts__view[data-aos] .layouts__preview:nth-child(1..5)
+   and .offer__view[data-aos] .offer__preview:nth-child(1..4)
+============================================================================ */
+.dr-assembly-stage .piece-base,
+.dr-assembly-stage .piece-top-right,
+.dr-assembly-stage .piece-bottom-left,
+.dr-assembly-stage .piece-top-left,
+.dr-assembly-stage .piece-bottom-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.65s ease-out;
+}
+
+/* Piece 1: Main Central Card rises from below */
+.dr-assembly-stage .piece-base {
+  transform: translateY(55px) scale(0.96);
+}
+
+/* Piece 2: Top-Right Satellite flies in diagonally from top-right */
+.dr-assembly-stage .piece-top-right {
+  transform: translate(65px, -55px) rotate(8deg);
+}
+
+/* Piece 3: Bottom-Left Satellite flies in with skew from left */
+.dr-assembly-stage .piece-bottom-left {
+  transform: translateX(-70px) skewX(10deg);
+}
+
+/* Piece 4: Top-Left Pill rotates & drops in */
+.dr-assembly-stage .piece-top-left {
+  transform: translate(-50px, -35px) rotate(-14deg);
+}
+
+/* Piece 5: Bottom-Right Badge pops from bottom-right */
+.dr-assembly-stage .piece-bottom-right {
+  transform: translate(55px, 55px) scale(0.88);
+}
+
+/* Active State when Scrolled into View */
+.dr-assembly-stage.is-inview .piece-base {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.05s;
+}
+
+.dr-assembly-stage.is-inview .piece-top-right {
+  opacity: 1;
+  transform: translate(0, 0) rotate(0deg);
+  transition-delay: 0.25s;
+}
+
+.dr-assembly-stage.is-inview .piece-bottom-left {
+  opacity: 1;
+  transform: translateX(0) skewX(0deg);
+  transition-delay: 0.38s;
+}
+
+.dr-assembly-stage.is-inview .piece-top-left {
+  opacity: 1;
+  transform: translate(0, 0) rotate(0deg);
+  transition-delay: 0.48s;
+}
+
+.dr-assembly-stage.is-inview .piece-bottom-right {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+  transition-delay: 0.58s;
+}
+
+/* ============================================================================
+   4. CONTINUOUS FLOATING LEVITATION & BAR GROW KEYFRAMES
+============================================================================ */
 @keyframes drnubeFloat {
   0%, 100% {
     transform: translateY(0px);
@@ -46,17 +230,6 @@
   }
 }
 
-@keyframes pulseSoft {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.65;
-    transform: scale(1.08);
-  }
-}
-
 .animate-float-1 {
   animation: drnubeFloat 3.4s ease-in-out infinite;
 }
@@ -69,31 +242,15 @@
   animation: drnubeFloatReverse 3.8s ease-in-out 1.1s infinite;
 }
 
-.animate-float-4 {
-  animation: drnubeFloat 4.5s ease-in-out 1.7s infinite;
+/* Animated Progress Bars inside Mockups on Scroll */
+.dr-progress-bar {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
 }
 
-/* Scroll Reveal Animations */
-.reveal-up {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-up.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 {
-  transition-delay: 0.1s;
-}
-.reveal-delay-2 {
-  transition-delay: 0.2s;
-}
-.reveal-delay-3 {
-  transition-delay: 0.3s;
+.is-inview .dr-progress-bar {
+  transform: scaleX(1);
 }
 
 /* Soft SaaS Shadows modeled after Dr.Nube */
@@ -102,7 +259,7 @@
 }
 
 .shadow-drnube-float {
-  box-shadow: 0 20px 40px -10px rgba(39, 39, 46, 0.14), 0 8px 20px -4px rgba(89, 86, 233, 0.1);
+  box-shadow: 0 20px 40px -10px rgba(39, 39, 46, 0.16), 0 8px 20px -4px rgba(89, 86, 233, 0.12);
 }
 
 .shadow-drnube-btn {

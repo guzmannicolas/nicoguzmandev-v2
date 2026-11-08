@@ -8,6 +8,7 @@ export default function PricingPlans() {
       badge: 'Rama 01 · Locales y Profesionales',
       name: 'Pack Web Express',
       highlight: false,
+      delay: '100',
       priceUnico: '$ 180.000',
       priceMensual: '$ 45.000',
       subUnico: 'ARS · Pago único llave en mano',
@@ -29,6 +30,7 @@ export default function PricingPlans() {
       badge: 'Más Elegido · Rama 02',
       name: 'Web + Bot WhatsApp IA',
       highlight: true,
+      delay: '200',
       priceUnico: '$ 390.000',
       priceMensual: '$ 85.000',
       subUnico: 'ARS · Implementación completa',
@@ -50,6 +52,7 @@ export default function PricingPlans() {
       badge: 'Rama 03 · PyMEs y Empresas',
       name: 'Sistema ERP / A Medida',
       highlight: false,
+      delay: '300',
       priceUnico: 'A Medida',
       priceMensual: 'Partner Tech',
       subUnico: 'Presupuesto cerrado por etapas',
@@ -70,22 +73,43 @@ export default function PricingPlans() {
   ];
 
   return (
-    <section id="planes" className="py-20 lg:py-28 bg-[#F6F8FF]">
+    <section id="planes" className="relative py-24 lg:py-32 bg-[#F6F8FF] overflow-hidden">
+      {/* Rellax Floating Sphere like .plan__circle in Dr.Nube */}
+      <div
+        data-parallax-speed="-1.5"
+        className="pointer-events-none absolute top-16 left-[8%] h-20 w-20 rounded-full bg-[#FAB8C4]/45"
+      />
+      <div
+        data-parallax-speed="1.8"
+        className="pointer-events-none absolute bottom-16 right-[6%] h-28 w-28 rounded-full bg-[#EBEAFB]"
+      />
+
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]">
+          <div
+            data-dr-anim="scale-y"
+            className="inline-flex items-center gap-2 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]"
+          >
             Inversión Clara y Transparente
           </div>
-          <h2 className="font-heading text-3xl font-extrabold text-[#27272E] sm:text-5xl">
+          <h2
+            data-dr-anim="scale-y"
+            data-dr-delay="100"
+            className="font-heading text-3xl font-extrabold text-[#27272E] sm:text-5xl"
+          >
             Elegí la solución exacta para la etapa actual de tu negocio
           </h2>
-          <p className="text-lg text-[#525260]">
+          <p
+            data-dr-anim="scale-y"
+            data-dr-delay="200"
+            className="text-lg text-[#525260]"
+          >
             Podés contratar el desarrollo llave en mano o elegir nuestro acompañamiento mensual para que nos ocupemos de todas las actualizaciones y servidores.
           </p>
 
           {/* Dr.Nube-style Interactive Switcher */}
-          <div className="pt-4 flex justify-center">
+          <div data-dr-anim="scale-y" data-dr-delay="300" className="pt-4 flex justify-center">
             <div className="inline-flex items-center rounded-full bg-white p-1.5 shadow-sm border border-[#EBEAFB]">
               <button
                 type="button"
@@ -113,12 +137,14 @@ export default function PricingPlans() {
           </div>
         </div>
 
-        {/* 3-Column Pricing Cards */}
+        {/* 3-Column Pricing Cards with Staggered Dr.Nube translate-y */}
         <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1.5 ${
+              data-dr-anim="translate-y"
+              data-dr-delay={plan.delay}
+              className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
                 plan.highlight
                   ? 'bg-[#27272E] text-white shadow-drnube-float ring-2 ring-[#5956E9]'
                   : 'bg-white text-[#27272E] shadow-drnube border border-slate-100'
