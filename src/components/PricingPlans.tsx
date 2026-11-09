@@ -5,7 +5,7 @@ export default function PricingPlans() {
 
   const plans = [
     {
-      badge: 'Rama 01 · Locales y Profesionales',
+      badge: 'Paso 1 · Tu Vidriera Online',
       name: 'Pack Web Express',
       highlight: false,
       delay: '100',
@@ -14,67 +14,67 @@ export default function PricingPlans() {
       subUnico: 'ARS · Pago único llave en mano',
       subMensual: 'ARS / mes · Hosting + Cambios incluidos',
       description:
-        'Tu página web profesional lista en 48 horas basada en nuestras arquitecturas de alta conversión.',
+        'Tu página web profesional lista en 48 horas con diseño moderno y adaptada a celulares.',
       features: [
-        'Adaptación completa con tu marca, fotos y precios en ARS',
-        'Diseño 100% optimizado para celulares (carga en < 1 seg)',
-        'Botón y formularios conectados directo a tu WhatsApp',
-        'Certificado de seguridad SSL y configuración de dominio',
-        'Posicionamiento inicial para aparecer en Google Maps',
+        'Web completa con tus fotos, servicios y precios en ARS',
+        'Adaptada 100% a celulares (carga en menos de 1 segundo)',
+        'Botón directo a tu WhatsApp para recibir clientes listos',
+        'Dominio propio, hosting de alta velocidad y certificado SSL',
+        'Aparición destacada en búsquedas de Google',
       ],
-      ctaText: 'Elegir Pack Web Express',
+      ctaText: 'Elegir Web Express',
       waLink:
         'https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20empezar%20con%20el%20Pack%20Web%20Express%20para%20mi%20negocio.',
     },
     {
-      badge: 'Más Elegido · Rama 02',
-      name: 'Web + Bot WhatsApp IA',
+      badge: 'El Más Elegido · Digitalización Total ⭐',
+      name: 'Web + Bot WhatsApp con IA',
       highlight: true,
       delay: '200',
       priceUnico: '$ 390.000',
       priceMensual: '$ 85.000',
       subUnico: 'ARS · Implementación completa',
-      subMensual: 'ARS / mes · Mantenimiento IA + Servidor',
+      subMensual: 'ARS / mes · Asistente IA + Mantenimiento',
       description:
-        'Para negocios con flujo de consultas en Instagram o Google que quieren agendar y cobrar en piloto automático.',
+        'La solución completa: tu web profesional más un asistente de WhatsApp que responde y cobra solo.',
       features: [
         'Todo lo incluido en el Pack Web Express',
-        'Asistente de WhatsApp con IA entrenado con tus servicios',
+        'Bot de WhatsApp con IA entrenado exclusivamente para tu negocio',
+        'Responde consultas y dudas frecuentes en 3 segundos las 24 hs',
+        'Cobro automático de señas por Mercado Pago',
         'Sincronización en vivo con tu agenda de Google Calendar',
-        'Generación automática de links de seña por Mercado Pago',
-        'Recordatorios automáticos 24 hs antes para evitar ausencias',
       ],
-      ctaText: 'Automatizar mi Negocio',
+      ctaText: 'Quiero la Solución Completa',
       waLink:
         'https://wa.me/5491100000000?text=Hola%20Nico!%20Me%20interesa%20el%20plan%20Web%20%2B%20Bot%20WhatsApp%20con%20IA.',
     },
     {
-      badge: 'Rama 03 · PyMEs y Empresas',
-      name: 'Sistema ERP / A Medida',
+      badge: 'Paso 3 · Control y Gestión',
+      name: 'Sistema a Medida / ERP',
       highlight: false,
       delay: '300',
       priceUnico: 'A Medida',
       priceMensual: 'Partner Tech',
       subUnico: 'Presupuesto cerrado por etapas',
-      subMensual: 'Acompañamiento y evolución continua',
+      subMensual: 'Evolución continua y soporte',
       description:
-        'Software centralizado para empresas con múltiples sucursales, stock complejo, vendedores o procesos propios.',
+        'Chau planillas de Excel. Software web simple para controlar stock, ventas y empleados desde tu celular.',
       features: [
-        'Relevamiento técnico y diagnóstico operativo sin cargo',
-        'Panel web multi-sucursal (stock, caja, cuentas corrientes)',
-        'Perfiles y permisos por rol (administrador, encargado, cajero)',
-        'Integración con facturación ARCA, Mercado Pago y bancos',
-        'Soporte directo sin intermediarios y servidores dedicados',
+        'Diagnóstico operativo de tu negocio sin cargo',
+        'Panel web en tu celular para ver ventas, caja y stock en vivo',
+        'Cuentas corrientes y recordatorios automáticos de cobro',
+        'Permisos por usuario para socios, encargados y cajeros',
+        'Soporte directo con Nicolás sin intermediarios',
       ],
-      ctaText: 'Solicitar Diagnóstico ERP',
+      ctaText: 'Consultar por Sistema',
       waLink:
-        'https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20solicitar%20un%20diagn%C3%B3stico%20para%20un%20Sistema%20ERP%20a%20medida.',
+        'https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20consultar%20por%20un%20Sistema%20a%20medida%20para%20mi%20negocio.',
     },
   ];
 
   return (
-    <section id="planes" className="relative py-24 lg:py-32 bg-[#F6F8FF] overflow-hidden">
-      {/* Rellax Floating Sphere like .plan__circle in Dr.Nube */}
+    <section id="planes" className="relative py-20 lg:py-28 bg-[#F6F8FF] overflow-hidden">
+      {/* Rellax Floating Spheres */}
       <div
         data-parallax-speed="-1.5"
         className="pointer-events-none absolute top-16 left-[8%] h-20 w-20 rounded-full bg-[#FAB8C4]/45"
@@ -91,147 +91,152 @@ export default function PricingPlans() {
             data-dr-anim="scale-y"
             className="inline-flex items-center gap-2 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]"
           >
-            Inversión Clara y Transparente
+            Precios Claros en Pesos
           </div>
           <h2
             data-dr-anim="scale-y"
             data-dr-delay="100"
-            className="font-heading text-3xl font-extrabold text-[#27272E] sm:text-5xl"
+            className="font-heading text-3xl font-extrabold text-[#27272E] sm:text-5xl lg:text-[48px]"
           >
-            Elegí la solución exacta para la etapa actual de tu negocio
+            Elegí cómo querés digitalizar tu negocio.
           </h2>
           <p
             data-dr-anim="scale-y"
-            data-dr-delay="200"
-            className="text-lg text-[#525260]"
+            data-dr-delay="150"
+            className="text-lg text-[#525260] sm:text-xl font-medium"
           >
-            Podés contratar el desarrollo llave en mano o elegir nuestro acompañamiento mensual para que nos ocupemos de todas las actualizaciones y servidores.
+            Sin costos sorpresa ni contratos raros. Trato directo y entrega rápida.
           </p>
 
-          {/* Dr.Nube-style Interactive Switcher */}
-          <div data-dr-anim="scale-y" data-dr-delay="300" className="pt-4 flex justify-center">
-            <div className="inline-flex items-center rounded-full bg-white p-1.5 shadow-sm border border-[#EBEAFB]">
+          {/* Billing Switch */}
+          <div data-dr-anim="scale-y" data-dr-delay="200" className="pt-2 flex justify-center">
+            <div className="inline-flex rounded-full bg-white p-1.5 shadow-sm border border-slate-200">
               <button
                 type="button"
                 onClick={() => setBillingMode('unico')}
-                className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all duration-200 ${
+                className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
                   billingMode === 'unico'
-                    ? 'bg-[#5956E9] text-white shadow-md shadow-[#5956E9]/25'
+                    ? 'bg-[#5956E9] text-white shadow-sm'
                     : 'text-[#525260] hover:text-[#27272E]'
                 }`}
               >
-                Implementación Llave en Mano
+                Pago Único (Llave en Mano)
               </button>
               <button
                 type="button"
                 onClick={() => setBillingMode('mensual')}
-                className={`rounded-full px-6 py-2.5 text-sm font-bold transition-all duration-200 ${
+                className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
                   billingMode === 'mensual'
-                    ? 'bg-[#5956E9] text-white shadow-md shadow-[#5956E9]/25'
+                    ? 'bg-[#5956E9] text-white shadow-sm'
                     : 'text-[#525260] hover:text-[#27272E]'
                 }`}
               >
-                Abono Mensual Todo Incluido
+                Plan Mensual (Todo Incluido)
               </button>
             </div>
           </div>
         </div>
 
-        {/* 3-Column Pricing Cards with Staggered Dr.Nube translate-y */}
-        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              data-dr-anim="translate-y"
-              data-dr-delay={plan.delay}
-              className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
-                plan.highlight
-                  ? 'bg-[#27272E] text-white shadow-drnube-float ring-2 ring-[#5956E9]'
-                  : 'bg-white text-[#27272E] shadow-drnube border border-slate-100'
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2">
+        {/* 3 Pricing Cards */}
+        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
+          {plans.map((p) => {
+            const price = billingMode === 'unico' ? p.priceUnico : p.priceMensual;
+            const sub = billingMode === 'unico' ? p.subUnico : p.subMensual;
+
+            return (
+              <div
+                key={p.name}
+                data-dr-anim="scale-y"
+                data-dr-delay={p.delay}
+                className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 ${
+                  p.highlight
+                    ? 'bg-[#27272E] text-white shadow-drnube ring-2 ring-[#5956E9]'
+                    : 'bg-white text-[#27272E] shadow-sm border border-slate-200/70 hover:shadow-drnube'
+                }`}
+              >
+                {p.highlight && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#5956E9] px-4 py-1 text-xs font-bold text-white uppercase tracking-wider shadow-sm">
+                    Recomendado
+                  </span>
+                )}
+
+                <div>
                   <span
-                    className={`inline-block rounded-full px-3.5 py-1 text-xs font-bold ${
-                      plan.highlight
-                        ? 'bg-[#5956E9] text-white'
+                    className={`inline-block rounded-full px-3 py-1 text-xs font-bold ${
+                      p.highlight
+                        ? 'bg-white/10 text-[#FFDC60]'
                         : 'bg-[#EBEAFB] text-[#5956E9]'
                     }`}
                   >
-                    {plan.badge}
+                    {p.badge}
                   </span>
-                </div>
 
-                <h3
-                  className={`mt-5 font-heading text-2xl font-extrabold ${
-                    plan.highlight ? 'text-white' : 'text-[#27272E]'
-                  }`}
-                >
-                  {plan.name}
-                </h3>
-
-                <p
-                  className={`mt-2 text-sm leading-relaxed ${
-                    plan.highlight ? 'text-slate-300' : 'text-[#525260]'
-                  }`}
-                >
-                  {plan.description}
-                </p>
-
-                <div className="mt-6 pb-6 border-b border-current/10">
-                  <p
-                    className={`font-heading text-4xl font-extrabold tracking-tight ${
-                      plan.highlight ? 'text-[#FFDC60]' : 'text-[#27272E]'
+                  <h3
+                    className={`mt-4 font-heading text-2xl font-extrabold ${
+                      p.highlight ? 'text-white' : 'text-[#27272E]'
                     }`}
                   >
-                    {billingMode === 'unico' ? plan.priceUnico : plan.priceMensual}
-                  </p>
+                    {p.name}
+                  </h3>
+
                   <p
-                    className={`mt-1 text-xs font-semibold ${
-                      plan.highlight ? 'text-slate-300' : 'text-[#999FAE]'
+                    className={`mt-2 text-sm leading-relaxed ${
+                      p.highlight ? 'text-slate-300' : 'text-[#525260]'
                     }`}
                   >
-                    {billingMode === 'unico' ? plan.subUnico : plan.subMensual}
+                    {p.description}
                   </p>
+
+                  <div className="mt-6 pb-6 border-b border-slate-200/20">
+                    <p
+                      className={`font-heading text-4xl font-extrabold ${
+                        p.highlight ? 'text-white' : 'text-[#27272E]'
+                      }`}
+                    >
+                      {price}
+                    </p>
+                    <p
+                      className={`mt-1 text-xs font-medium ${
+                        p.highlight ? 'text-[#FFDC60]' : 'text-[#525260]'
+                      }`}
+                    >
+                      {sub}
+                    </p>
+                  </div>
+
+                  <ul className="mt-6 space-y-3.5 text-sm">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs mt-0.5">
+                          ✓
+                        </span>
+                        <span
+                          className={p.highlight ? 'text-slate-200' : 'text-[#525260]'}
+                        >
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <ul className="mt-6 space-y-3.5 text-sm">
-                  {plan.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-3">
-                      <span
-                        className={`mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
-                          plan.highlight
-                            ? 'bg-[#5956E9] text-white'
-                            : 'bg-[#EBEAFB] text-[#5956E9]'
-                        }`}
-                      >
-                        ✓
-                      </span>
-                      <span className={plan.highlight ? 'text-slate-200' : 'text-[#525260]'}>
-                        {feat}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="pt-8">
+                  <a
+                    href={p.waLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full inline-flex items-center justify-center rounded-full py-4 text-sm font-bold transition-all duration-300 ${
+                      p.highlight
+                        ? 'bg-[#5956E9] text-white shadow-drnube-btn hover:bg-[#6355F3]'
+                        : 'bg-[#27272E] text-white hover:bg-[#5956E9]'
+                    }`}
+                  >
+                    {p.ctaText}
+                  </a>
+                </div>
               </div>
-
-              <div className="mt-8 pt-4">
-                <a
-                  href={plan.waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block w-full rounded-full py-4 text-center text-sm font-bold transition-all duration-300 ${
-                    plan.highlight
-                      ? 'bg-[#5956E9] text-white shadow-drnube-btn hover:bg-[#6355F3]'
-                      : 'bg-[#F6F8FF] text-[#5956E9] hover:bg-[#5956E9] hover:text-white'
-                  }`}
-                >
-                  {plan.ctaText}
-                </a>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

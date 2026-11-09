@@ -13,8 +13,8 @@ export default function HeroTilt() {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -9;
-    const rotateY = ((x - centerX) / centerX) * 9;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
     setTilt({ rotateX, rotateY });
   };
 
@@ -23,12 +23,12 @@ export default function HeroTilt() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-drnube-mesh pt-28 pb-20 lg:pt-36 lg:pb-28">
-      {/* Dr.Nube Rellax Floating Pastel Spheres (move with scroll) */}
+    <section className="relative overflow-hidden bg-drnube-mesh pt-28 pb-16 lg:pt-36 lg:pb-24">
+      {/* Dr.Nube Rellax Floating Pastel Spheres */}
       <div
         data-parallax-speed="1.8"
         data-parallax-x="0.5"
-        className="pointer-events-none absolute top-24 left-[6%] h-14 w-14 rounded-full bg-[#FAB8C4]/60 blur-[1px]"
+        className="pointer-events-none absolute top-24 left-[5%] h-16 w-16 rounded-full bg-[#FAB8C4]/60 blur-[1px]"
       />
       <div
         data-parallax-speed="-1.5"
@@ -37,86 +37,86 @@ export default function HeroTilt() {
       />
       <div
         data-parallax-speed="2.2"
-        className="pointer-events-none absolute bottom-12 left-[42%] h-16 w-16 rounded-full bg-[#EBEAFB] border border-[#5956E9]/20"
+        className="pointer-events-none absolute bottom-12 left-[38%] h-16 w-16 rounded-full bg-[#EBEAFB] border border-[#5956E9]/20"
       />
       <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#EBEAFB]/70 blur-3xl" />
       <div className="pointer-events-none absolute bottom-0 left-10 h-72 w-72 rounded-full bg-[#FAB8C4]/25 blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-10">
-          {/* Left Column: Masked Title Reveal + Elastic Scale-Y Copy */}
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
+          {/* Left Column: Big, Bold, Concise Copy Focused on Helping Businesses Digitalize */}
           <div className="lg:col-span-6 space-y-6 text-left">
             <div
               data-dr-anim="scale-y"
               className="inline-flex items-center gap-2.5 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]"
             >
               <span className="h-2 w-2 rounded-full bg-[#5956E9] animate-pulse" />
-              <span>Tecnología para Negocios en Argentina</span>
+              <span>Ayudamos a Comercios y Profesionales a Digitalizarse</span>
             </div>
 
-            {/* Dr.Nube Masked Line-by-Line Title Reveal */}
-            <h1 className="title-mask-container is-inview font-heading text-4xl font-extrabold leading-[1.12] tracking-tight text-[#27272E] sm:text-5xl lg:text-[54px]">
+            {/* Big Masked Line-by-Line Title Reveal */}
+            <h1 className="title-mask-container is-inview font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-[#27272E] sm:text-5xl lg:text-[60px]">
               <span className="title-mask-box">
-                <span className="title-mask-text">Llevá tu negocio al</span>
+                <span className="title-mask-text">Dejá de perder tiempo.</span>
               </span>
               <span className="title-mask-box">
                 <span className="title-mask-text">
-                  siguiente nivel,{' '}
-                  <span className="text-[#5956E9]">automatizá</span>
+                  <span className="text-[#5956E9]">Digitalizá</span> tu negocio
                 </span>
               </span>
               <span className="title-mask-box">
-                <span className="title-mask-text">
-                  <span className="text-[#5956E9]">ventas</span> y ganá tiempo.
-                </span>
+                <span className="title-mask-text">y vendé las 24 horas.</span>
               </span>
             </h1>
 
+            {/* Concise, impactful subtext */}
             <p
               data-dr-anim="scale-y"
-              data-dr-delay="200"
-              className="max-w-xl text-lg leading-relaxed text-[#525260] sm:text-xl"
+              data-dr-delay="150"
+              className="max-w-xl text-xl leading-relaxed text-[#525260] sm:text-2xl font-medium"
             >
-              Desde páginas web listas para vender en 48 horas hasta bots de WhatsApp con IA que agendan turnos y cobran señas por Mercado Pago sin que tengas que tocar el teléfono.
+              Páginas web listas en 48 hs, bots de WhatsApp que atienden y cobran por vos, y sistemas simples sin planillas de Excel.
             </p>
 
-            {/* Primary & Secondary CTAs with Elastic Scale-Y */}
+            {/* Primary & Secondary CTAs */}
             <div
               data-dr-anim="scale-y"
-              data-dr-delay="300"
+              data-dr-delay="250"
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
             >
               <a
                 href="#planes"
-                className="inline-flex items-center justify-center rounded-full bg-[#5956E9] px-8 py-4 text-base font-bold text-white shadow-drnube-btn transition-all duration-300 hover:-translate-y-1 hover:bg-[#4441C8]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#5956E9] px-9 py-4 text-base font-bold text-white shadow-drnube-btn transition-all duration-300 hover:-translate-y-1 hover:bg-[#4441C8]"
               >
-                Comenzar ahora
+                <span>🚀</span>
+                <span>Quiero Digitalizar mi Negocio</span>
               </a>
               <a
                 href="#showroom-webs"
-                className="inline-flex items-center justify-center rounded-full bg-white border border-slate-200 px-7 py-4 text-base font-bold text-[#27272E] shadow-sm transition-all duration-300 hover:border-[#5956E9] hover:text-[#5956E9]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white border border-slate-200 px-7 py-4 text-base font-bold text-[#27272E] shadow-sm transition-all duration-300 hover:border-[#5956E9] hover:text-[#5956E9]"
               >
-                Explorar 8 Demos en Vivo
+                <span>👁️</span>
+                <span>Ver 8 Demos en Vivo</span>
               </a>
             </div>
 
-            {/* Key Value Pills */}
+            {/* 3 High-Impact Big Value Pills */}
             <div
               data-dr-anim="scale-y"
-              data-dr-delay="400"
+              data-dr-delay="350"
               className="pt-4 grid grid-cols-3 gap-3 border-t border-slate-200/70 max-w-lg"
             >
               <div>
-                <p className="font-heading text-2xl font-extrabold text-[#27272E]">48 hs</p>
-                <p className="text-xs font-medium text-[#525260]">Entrega Web Express</p>
+                <p className="font-heading text-3xl font-extrabold text-[#27272E]">48 hs</p>
+                <p className="text-xs font-semibold text-[#525260] mt-0.5">Tu web funcionando</p>
               </div>
               <div>
-                <p className="font-heading text-2xl font-extrabold text-[#5956E9]">24/7</p>
-                <p className="text-xs font-medium text-[#525260]">Bot WhatsApp con IA</p>
+                <p className="font-heading text-3xl font-extrabold text-[#5956E9]">24/7</p>
+                <p className="text-xs font-semibold text-[#525260] mt-0.5">Atención por WhatsApp</p>
               </div>
               <div>
-                <p className="font-heading text-2xl font-extrabold text-[#27272E]">100%</p>
-                <p className="text-xs font-medium text-[#525260]">Integrado a Mercado Pago</p>
+                <p className="font-heading text-3xl font-extrabold text-emerald-600">0%</p>
+                <p className="text-xs font-semibold text-[#525260] mt-0.5">Complicaciones técnicas</p>
               </div>
             </div>
           </div>
@@ -126,26 +126,26 @@ export default function HeroTilt() {
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="dr-assembly-stage is-inview lg:col-span-6 relative flex items-center justify-center py-6 lg:py-4"
+            className="dr-assembly-stage is-inview lg:col-span-6 relative flex items-center justify-center py-4"
             style={{ perspective: '1100px' }}
           >
             <div
-              className="relative w-full max-w-[560px] transition-transform duration-200 ease-out"
+              className="relative w-full max-w-[540px] transition-transform duration-200 ease-out"
               style={{
                 transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
                 transformStyle: 'preserve-3d',
               }}
             >
-              {/* Piece 1 (Base): Central SaaS Dashboard Card */}
+              {/* Central SaaS Card */}
               <div className="piece-base relative rounded-3xl bg-white p-6 sm:p-7 shadow-drnube border border-slate-100">
-                {/* Top Window Bar & Branch Switcher */}
+                {/* Top Window Bar & Tab Switcher */}
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-5 border-b border-slate-100">
                   <div className="flex items-center gap-2">
                     <span className="h-3 w-3 rounded-full bg-[#FAB8C4]" />
                     <span className="h-3 w-3 rounded-full bg-[#FFDC60]" />
                     <span className="h-3 w-3 rounded-full bg-[#5956E9]" />
                     <span className="ml-2 text-xs font-bold text-[#999FAE] uppercase tracking-wider">
-                      Panel Central · En Vivo
+                      Así funciona tu negocio digital
                     </span>
                   </div>
                   <div className="flex rounded-full bg-[#F6F8FF] p-1 text-xs font-bold">
@@ -169,7 +169,7 @@ export default function HeroTilt() {
                           : 'text-[#525260] hover:text-[#27272E]'
                       }`}
                     >
-                      Web Locales
+                      Web Propia
                     </button>
                     <button
                       type="button"
@@ -180,83 +180,84 @@ export default function HeroTilt() {
                           : 'text-[#525260] hover:text-[#27272E]'
                       }`}
                     >
-                      ERP PyME
+                      Control Total
                     </button>
                   </div>
                 </div>
 
-                {/* Dynamic Central Screen Content */}
+                {/* Tab 1: WhatsApp Bot */}
                 {activeTab === 'bot' && (
                   <div className="pt-5 space-y-4">
                     <div className="flex items-center justify-between rounded-2xl bg-[#F6F8FF] px-4 py-3">
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-[#5956E9]">
-                          Asistente IA Activo
+                          Atención Inmediata
                         </p>
                         <p className="font-heading text-lg font-bold text-[#27272E]">
-                          Recepción y Cobro de Turnos
+                          Ventas y Turnos Automáticos
                         </p>
                       </div>
                       <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
-                        Responde en 2 seg
+                        ● Online 24/7
                       </span>
                     </div>
 
                     {/* Simulated WhatsApp Conversation */}
-                    <div className="space-y-3 rounded-2xl bg-[#ECF2F6]/60 p-4 text-sm">
-                      <div className="max-w-[82%] rounded-2xl rounded-tl-sm bg-white p-3 shadow-xs text-[#27272E]">
-                        <p className="text-[11px] font-bold text-[#999FAE] mb-0.5">Cliente · 22:45 hs</p>
-                        Hola! ¿Tienen disponibilidad para mañana viernes a la tarde?
+                    <div className="space-y-3 rounded-2xl bg-[#ECF2F6]/70 p-4 text-sm">
+                      <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-white p-3 shadow-xs text-[#27272E]">
+                        <p className="text-[11px] font-bold text-[#999FAE] mb-0.5">Cliente · 23:15 hs</p>
+                        Hola! ¿Tienen turno para corte y barba mañana viernes? ¿Cuánto sale?
                       </div>
                       <div className="ml-auto max-w-[88%] rounded-2xl rounded-tr-sm bg-[#5956E9] p-3.5 text-white shadow-sm">
                         <p className="text-[11px] font-semibold text-[#EBEAFB] mb-0.5">
-                          Bot IA NicoGuzman · 22:45 hs
+                          Tu Asistente IA · Inmediato
                         </p>
-                        ¡Hola! Sí, me queda libre mañana viernes a las 16:30 o 18:00 hs. Te dejo el link de Mercado Pago para confirmar tu reserva al instante.
+                        ¡Hola! Sí, queda libre a las 16:30 y 18:00 hs. El total es $14.000. Te dejo el link de Mercado Pago para reservar tu seña de $4.000 en 1 clic.
                       </div>
                     </div>
 
-                    {/* Bottom Metrics Row */}
+                    {/* Quick Metric Badges */}
                     <div className="grid grid-cols-3 gap-3 pt-1">
-                      <div className="rounded-2xl bg-[#F6F8FF] p-3">
-                        <p className="text-[11px] font-semibold text-[#525260]">Consultas hoy</p>
-                        <p className="font-heading text-xl font-extrabold text-[#27272E]">48</p>
+                      <div className="rounded-2xl bg-[#F6F8FF] p-3 text-center">
+                        <p className="text-[11px] font-semibold text-[#525260]">Respuesta</p>
+                        <p className="font-heading text-xl font-extrabold text-[#27272E]">&lt; 3 seg</p>
                       </div>
-                      <div className="rounded-2xl bg-[#EBEAFB] p-3">
-                        <p className="text-[11px] font-semibold text-[#5956E9]">Señas cobradas</p>
-                        <p className="font-heading text-xl font-extrabold text-[#5956E9]">19</p>
+                      <div className="rounded-2xl bg-[#EBEAFB] p-3 text-center">
+                        <p className="text-[11px] font-semibold text-[#5956E9]">Cobros MP</p>
+                        <p className="font-heading text-xl font-extrabold text-[#5956E9]">Automático</p>
                       </div>
-                      <div className="rounded-2xl bg-[#F6F8FF] p-3">
-                        <p className="text-[11px] font-semibold text-[#525260]">Ausentismo</p>
+                      <div className="rounded-2xl bg-[#F6F8FF] p-3 text-center">
+                        <p className="text-[11px] font-semibold text-[#525260]">Clientes perdidos</p>
                         <p className="font-heading text-xl font-extrabold text-emerald-600">0%</p>
                       </div>
                     </div>
                   </div>
                 )}
 
+                {/* Tab 2: Web Propia */}
                 {activeTab === 'webs' && (
                   <div className="pt-5 space-y-4">
                     <div className="flex items-center justify-between rounded-2xl bg-[#F6F8FF] px-4 py-3">
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-[#5956E9]">
-                          Webs de Alta Conversión
+                          Presencia Digital Profesional
                         </p>
                         <p className="font-heading text-lg font-bold text-[#27272E]">
-                          8 Rubros Listos para Lanzar
+                          Tu Vidriera Online Lista en 48 hs
                         </p>
                       </div>
-                      <span className="rounded-full bg-[#FFDC60]/40 px-3 py-1 text-xs font-bold text-[#27272E]">
-                        Carga &lt; 0.8s
+                      <span className="rounded-full bg-[#FFDC60]/50 px-3 py-1 text-xs font-bold text-[#27272E]">
+                        Entrega Rápida
                       </span>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
                       <div className="rounded-2xl border border-slate-100 bg-white p-3.5 shadow-xs">
                         <span className="inline-block rounded-md bg-[#EBEAFB] px-2 py-0.5 text-[10px] font-bold text-[#5956E9]">
-                          GASTRONOMÍA & BARES
+                          GASTRONOMÍA
                         </span>
                         <p className="mt-1.5 font-heading text-sm font-bold text-[#27272E]">
-                          Carta Digital + Reservas WhatsApp
+                          Carta Digital + Pedidos WhatsApp
                         </p>
                       </div>
                       <div className="rounded-2xl border border-slate-100 bg-white p-3.5 shadow-xs">
@@ -264,7 +265,7 @@ export default function HeroTilt() {
                           ESTÉTICA & BARBERÍAS
                         </span>
                         <p className="mt-1.5 font-heading text-sm font-bold text-[#27272E]">
-                          Agenda de Turnos + Precios en ARS
+                          Turnero Online + Precios en ARS
                         </p>
                       </div>
                       <div className="rounded-2xl border border-slate-100 bg-white p-3.5 shadow-xs">
@@ -272,114 +273,71 @@ export default function HeroTilt() {
                           TALLERES & SERVICIOS
                         </span>
                         <p className="mt-1.5 font-heading text-sm font-bold text-[#27272E]">
-                          Presupuestos Directos + Ubicación
+                          Presupuestos en 1 Clic
                         </p>
                       </div>
                       <div className="rounded-2xl border border-slate-100 bg-white p-3.5 shadow-xs">
                         <span className="inline-block rounded-md bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-800">
-                          SALUD & INMOBILIARIAS
+                          PROFESIONALES
                         </span>
                         <p className="mt-1.5 font-heading text-sm font-bold text-[#27272E]">
-                          Catálogo Filtrable + Contacto Rápido
+                          Autoridad en Google Maps
                         </p>
                       </div>
                     </div>
                   </div>
                 )}
 
+                {/* Tab 3: Control Total */}
                 {activeTab === 'erp' && (
                   <div className="pt-5 space-y-4">
                     <div className="flex items-center justify-between rounded-2xl bg-[#F6F8FF] px-4 py-3">
                       <div>
                         <p className="text-xs font-bold uppercase tracking-wider text-[#5956E9]">
-                          Sistemas a Medida & ERP
+                          Gestión Simple
                         </p>
                         <p className="font-heading text-lg font-bold text-[#27272E]">
-                          Control Multi-Sucursal en Tiempo Real
+                          Chau Planillas Desordenadas
                         </p>
                       </div>
-                      <span className="rounded-full bg-[#EBEAFB] px-3 py-1 text-xs font-bold text-[#5956E9]">
-                        3 Locales Activos
+                      <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
+                        En tu Celular
                       </span>
                     </div>
 
                     <div className="rounded-2xl bg-[#27272E] p-4 text-white">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs text-[#999FAE]">Facturación Consolidada (Mes Actual)</p>
-                          <p className="font-heading text-2xl font-extrabold text-white mt-0.5">
-                            $ 18.420.000 ARS
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#FFDC60]">
+                        Resumen de Hoy en Vivo
+                      </p>
+                      <div className="mt-3 grid grid-cols-2 gap-3">
+                        <div className="rounded-xl bg-white/10 p-3">
+                          <p className="text-xs text-slate-300">Ventas Cobradas</p>
+                          <p className="font-heading text-2xl font-extrabold text-emerald-400">
+                            $ 380.000
                           </p>
                         </div>
-                        <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold text-emerald-300">
-                          +34.2% vs mes ant.
-                        </span>
-                      </div>
-                      {/* Mini CSS Bar Chart */}
-                      <div className="mt-4 flex items-end gap-2 h-16 pt-2">
-                        <div className="w-full rounded-t-md bg-white/15 h-[45%]" />
-                        <div className="w-full rounded-t-md bg-white/25 h-[60%]" />
-                        <div className="w-full rounded-t-md bg-white/20 h-[52%]" />
-                        <div className="w-full rounded-t-md bg-[#FAB8C4] h-[75%]" />
-                        <div className="w-full rounded-t-md bg-[#FFDC60] h-[88%]" />
-                        <div className="w-full rounded-t-md bg-[#5956E9] h-full" />
+                        <div className="rounded-xl bg-white/10 p-3">
+                          <p className="text-xs text-slate-300">Turnos / Pedidos</p>
+                          <p className="font-heading text-2xl font-extrabold text-white">
+                            24 listos
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Piece 2 (Top Right Satellite): Mercado Pago */}
-              <div
-                className="piece-top-right hidden sm:block absolute -top-7 -right-6 z-20"
-                style={{ transform: 'translateZ(55px)' }}
-              >
-                <div className="animate-float-1 rounded-2xl bg-white px-4 py-3 shadow-drnube-float border border-[#EBEAFB]">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#EBEAFB] font-heading text-xs font-extrabold text-[#5956E9]">
-                      MP
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-600">
-                        Seña Acreditada
-                      </p>
-                      <p className="font-heading text-sm font-extrabold text-[#27272E]">
-                        +$ 15.000 ARS · Turno 17:30
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              {/* Satellite Float 1: Top Right */}
+              <div className="piece-top-right hidden sm:block absolute -top-5 -right-5 z-20 rounded-2xl bg-[#FFDC60] px-4 py-3 text-[#27272E] shadow-drnube-float">
+                <p className="text-[10px] font-black uppercase tracking-wider">Cobros Automáticos</p>
+                <p className="font-heading text-xs font-extrabold mt-0.5">Mercado Pago Directo ✓</p>
               </div>
 
-              {/* Piece 3 (Bottom Left Satellite): Conversión */}
-              <div
-                className="piece-bottom-left hidden sm:block absolute -bottom-7 -left-6 z-20"
-                style={{ transform: 'translateZ(65px)' }}
-              >
-                <div className="animate-float-2 rounded-2xl bg-[#27272E] px-4 py-3.5 text-white shadow-drnube-float">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FFDC60] font-heading text-xs font-extrabold text-[#27272E]">
-                      +42%
-                    </div>
-                    <div>
-                      <p className="text-[11px] font-semibold text-[#999FAE]">Conversión de Clientes</p>
-                      <p className="font-heading text-sm font-bold text-white">
-                        Cero consultas perdidas
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Piece 4 (Top Left Satellite Pill): Google Calendar */}
-              <div
-                className="piece-top-left hidden md:block absolute -top-5 left-6 z-20"
-                style={{ transform: 'translateZ(40px)' }}
-              >
-                <div className="animate-float-3 flex items-center gap-2 rounded-full bg-[#FAB8C4] px-3.5 py-1.5 text-xs font-extrabold text-[#27272E] shadow-md">
-                  <span className="h-2 w-2 rounded-full bg-[#27272E]" />
-                  <span>Sincronizado con Google Calendar</span>
-                </div>
+              {/* Satellite Float 2: Bottom Left */}
+              <div className="piece-bottom-left hidden sm:block absolute -bottom-5 -left-5 z-20 rounded-2xl bg-[#27272E] px-4 py-3 text-white shadow-drnube-float">
+                <p className="text-[10px] font-bold text-[#FAB8C4] uppercase">Google Calendar</p>
+                <p className="font-heading text-xs font-extrabold text-white mt-0.5">Agenda 100% Sincronizada</p>
               </div>
             </div>
           </div>

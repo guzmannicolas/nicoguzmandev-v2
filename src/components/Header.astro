@@ -1,16 +1,15 @@
 ---
 const navLinks = [
-  { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Automatización IA', href: '#automatizacion-ia' },
-  { label: 'Showroom Webs', href: '#showroom-webs' },
-  { label: 'Sistemas ERP', href: '#sistemas-erp' },
-  { label: 'Planes y Precios', href: '#planes' },
+  { label: 'Webs Rápidas', href: '#showroom-webs' },
+  { label: 'WhatsApp con IA', href: '#automatizacion-ia' },
+  { label: 'Sistemas', href: '#sistemas-erp' },
+  { label: 'Precios', href: '#planes' },
 ];
 ---
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-lg border-b border-transparent"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/85 backdrop-blur-lg border-b border-slate-100"
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
     <!-- Brand Logo -->
@@ -23,7 +22,7 @@ const navLinks = [
           <span class="font-heading text-xl font-bold tracking-tight text-[#27272E]">nicoguzman</span>
           <span class="rounded-md bg-[#EBEAFB] px-1.5 py-0.5 font-heading text-xs font-bold text-[#5956E9]">.dev</span>
         </div>
-        <span class="text-[11px] font-medium text-[#999FAE] -mt-0.5">Software & IA para Negocios</span>
+        <span class="text-[11px] font-medium text-[#999FAE] -mt-0.5">Digitalización para Negocios</span>
       </div>
     </a>
 
@@ -47,93 +46,82 @@ const navLinks = [
         rel="noopener noreferrer"
         class="rounded-full bg-[#F6F8FF] px-4 py-2.5 text-sm font-semibold text-[#5956E9] transition-all duration-200 hover:bg-[#EBEAFB]"
       >
-        Ver Demos en Vivo
+        8 Demos en Vivo
       </a>
       <a
         href="#planes"
         class="rounded-full bg-[#5956E9] px-6 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#5956E9]/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4441C8]"
       >
-        Comenzar ahora
+        Quiero Digitalizarme
       </a>
     </div>
 
-    <!-- Mobile Menu Toggle Button (Typographic Pill, zero generic icons) -->
+    <!-- Mobile Menu Toggle Button -->
     <button
       id="mobile-menu-btn"
       type="button"
       aria-label="Abrir menú"
-      class="flex lg:hidden items-center gap-2 rounded-full bg-[#F6F8FF] px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#27272E] border border-[#EBEAFB]"
+      class="lg:hidden flex items-center gap-1.5 rounded-full bg-[#F6F8FF] px-3.5 py-2 text-xs font-bold text-[#27272E] border border-slate-200"
     >
-      <span id="mobile-menu-label">Menú</span>
-      <span class="h-2 w-2 rounded-full bg-[#5956E9]"></span>
+      <span>Menú</span>
+      <span class="text-[#5956E9]">▾</span>
     </button>
   </div>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Dropdown Menu -->
   <div
-    id="mobile-drawer"
-    class="hidden lg:hidden bg-white border-b border-slate-100 px-6 pt-3 pb-6 shadow-xl"
+    id="mobile-menu"
+    class="hidden lg:hidden border-b border-slate-100 bg-white/95 backdrop-blur-xl px-5 py-6 space-y-4"
   >
     <div class="flex flex-col space-y-3">
       {navLinks.map((item) => (
         <a
           href={item.href}
-          class="mobile-nav-link rounded-xl px-3 py-2.5 text-base font-semibold text-[#27272E] hover:bg-[#F6F8FF] hover:text-[#5956E9]"
+          class="mobile-nav-link text-base font-semibold text-[#27272E] hover:text-[#5956E9]"
         >
           {item.label}
         </a>
       ))}
-      <div class="pt-3 flex flex-col gap-2.5 border-t border-slate-100">
-        <a
-          href="https://templates.nicoguzmandev.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full text-center rounded-full bg-[#F6F8FF] py-3 text-sm font-bold text-[#5956E9]"
-        >
-          Ver Demos en Vivo
-        </a>
-        <a
-          href="#planes"
-          class="mobile-nav-link w-full text-center rounded-full bg-[#5956E9] py-3 text-sm font-bold text-white shadow-drnube-btn"
-        >
-          Comenzar ahora
-        </a>
-      </div>
+      <a
+        href="https://templates.nicoguzmandev.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-nav-link text-base font-semibold text-[#5956E9]"
+      >
+        Ver 8 Demos en Vivo ↗
+      </a>
+    </div>
+    <div class="pt-4 border-t border-slate-100">
+      <a
+        href="#planes"
+        class="mobile-nav-link block w-full rounded-full bg-[#5956E9] py-3 text-center text-sm font-bold text-white shadow-md"
+      >
+        Quiero Digitalizarme
+      </a>
     </div>
   </div>
 </header>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.getElementById('main-header');
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const menuLabel = document.getElementById('mobile-menu-label');
-    const drawer = document.getElementById('mobile-drawer');
+  const header = document.getElementById('main-header');
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
 
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header?.classList.add('shadow-sm', 'border-slate-200/70', 'bg-white/95');
-      } else {
-        header?.classList.remove('shadow-sm', 'border-slate-200/70', 'bg-white/95');
-      }
-    });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header?.classList.add('shadow-xs', 'border-slate-100');
+    } else {
+      header?.classList.remove('shadow-xs', 'border-slate-100');
+    }
+  });
 
-    menuBtn?.addEventListener('click', () => {
-      const isHidden = drawer?.classList.contains('hidden');
-      if (isHidden) {
-        drawer?.classList.remove('hidden');
-        if (menuLabel) menuLabel.textContent = 'Cerrar';
-      } else {
-        drawer?.classList.add('hidden');
-        if (menuLabel) menuLabel.textContent = 'Menú';
-      }
-    });
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
 
-    document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-      link.addEventListener('click', () => {
-        drawer?.classList.add('hidden');
-        if (menuLabel) menuLabel.textContent = 'Menú';
-      });
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
     });
   });
 </script>
