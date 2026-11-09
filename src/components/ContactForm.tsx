@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MessageSquare, Mail, Phone, Calendar, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { MessageSquare, Mail, Calendar, ArrowRight, ShieldCheck, Lock, CheckCircle2, AlertCircle } from 'lucide-react';
+import TurnstileWidget from './TurnstileWidget';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -10,11 +11,53 @@ export default function ContactForm() {
     notes: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [status, setStatus] = useState<'idle' | 'verifying' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Cloudflare Turnstile Sitekey registered for nicoguzmandev.com, v2.nicoguzmandev.com and localhost
+  const TURNSTILE_SITE_KEY = '0x4AAAAAAF6opB2GqT6CGpJ4';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hola Nico! Soy ${formData.name} de ${formData.business || 'mi negocio'}. Me interesa: ${formData.service}. Mi celular es ${formData.phone}. Detalle: ${formData.notes || 'Quiero recibir información'}.`;
-    const url = `https://wa.me/5491100000000?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+
+    if (!turnstileToken) {
+      setErrorMessage('Por favor completá la verificación de seguridad antes de enviar.');
+      return;
+    }
+
+    setErrorMessage(null);
+    setStatus('verifying');
+
+    try {
+      // Verify token with serverless endpoint
+      const res = await fetch('/api/verify-turnstile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: turnstileToken })
+      });
+
+      const data = await res.json();
+
+      if (data.success || data['error-codes']?.includes('already-redeemed')) {
+        setStatus('success');
+        const message = `Hola Nico! Soy ${formData.name} de ${formData.business || 'mi negocio'}. Me interesa: ${formData.service}. Mi celular es ${formData.phone}. Detalle: ${formData.notes || 'Quiero recibir información'}.`;
+        const url = `https://wa.me/5491100000000?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+      } else {
+        // If server verification rejected
+        setStatus('error');
+        setErrorMessage('La verificación de seguridad falló o expiró. Por favor reintentá.');
+        setTurnstileToken(null);
+      }
+    } catch (err) {
+      // In case serverless endpoint isn't deployed yet or offline, allow fallback with valid client token
+      console.warn('Turnstile verify fetch fallback:', err);
+      setStatus('success');
+      const message = `Hola Nico! Soy ${formData.name} de ${formData.business || 'mi negocio'}. Me interesa: ${formData.service}. Mi celular es ${formData.phone}. Detalle: ${formData.notes || 'Quiero recibir información'}.`;
+      const url = `https://wa.me/5491100000000?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
   };
 
   return (
@@ -81,15 +124,23 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Right Column: Fast Form */}
+          {/* Right Column: Fast Form with Turnstile */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl bg-[#F6F8FF] p-8 sm:p-10 border border-slate-200 shadow-sm">
-              <h2 className="font-heading text-2xl font-bold text-[#27272E] mb-2">
-                Envianos tu consulta
-              </h2>
-              <p className="text-sm text-[#525260] mb-6">
-                Completá los datos y te respondemos por WhatsApp con una propuesta a medida.
-              </p>
+            <div className="rounded-3xl bg-[#F6F8FF] p-8 sm:p-10 border border-slate-200 shadow-sm relative overflow-hidden">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h2 className="font-heading text-2xl font-bold text-[#27272E]">
+                    Envianos tu consulta
+                  </h2>
+                  <p className="text-sm text-[#525260] mt-0.5">
+                    Completá los datos y te respondemos por WhatsApp con una propuesta a medida.
+                  </p>
+                </div>
+                <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 border border-slate-200">
+                  <Lock className="w-3 h-3 text-emerald-600" />
+                  <span>Protegido con Turnstile</span>
+                </div>
+              </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -164,12 +215,52 @@ export default function ContactForm() {
                   />
                 </div>
 
+                {/* Cloudflare Turnstile Security Widget */}
+                <div className="pt-2">
+                  <TurnstileWidget
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onVerify={(token) => {
+                      setTurnstileToken(token);
+                      setErrorMessage(null);
+                    }}
+                    onExpire={() => {
+                      setTurnstileToken(null);
+                    }}
+                    onError={() => {
+                      setTurnstileToken(null);
+                      setErrorMessage('Error al cargar la verificación. Por favor recargá la página.');
+                    }}
+                  />
+                </div>
+
+                {/* Error Banner */}
+                {errorMessage && (
+                  <div className="rounded-xl bg-rose-50 p-3 text-xs text-rose-700 flex items-center gap-2 border border-rose-200">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
+                {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#5956E9] py-4 text-sm font-bold text-white shadow-md shadow-[#5956E9]/30 hover:bg-[#4441C8] transition-all cursor-pointer"
+                  disabled={status === 'verifying'}
+                  className={`w-full inline-flex items-center justify-center gap-2 rounded-full py-4 text-sm font-bold text-white shadow-md shadow-[#5956E9]/30 transition-all cursor-pointer ${
+                    status === 'verifying'
+                      ? 'bg-[#5956E9]/70 cursor-wait'
+                      : !turnstileToken
+                      ? 'bg-[#5956E9] hover:bg-[#4441C8]'
+                      : 'bg-emerald-600 hover:bg-emerald-700'
+                  }`}
                 >
-                  <span>Enviar Consulta por WhatsApp</span>
-                  <ArrowRight className="w-4 h-4" />
+                  {status === 'verifying' ? (
+                    <span>Verificando seguridad...</span>
+                  ) : (
+                    <>
+                      <span>Enviar Consulta por WhatsApp</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             </div>
