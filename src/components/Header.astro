@@ -1,4 +1,6 @@
 ---
+import BrandLogo from './BrandLogo.astro';
+
 interface Props {
   currentPath?: string;
 }
@@ -21,17 +23,8 @@ const navLinks = [
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
     <!-- Brand Logo -->
-    <a href="/" class="group flex items-center gap-2 focus:outline-none">
-      <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#5956E9] text-white font-heading font-bold text-lg shadow-md shadow-[#5956E9]/25 transition-transform duration-300 group-hover:scale-105">
-        NG
-      </div>
-      <div class="flex flex-col">
-        <div class="flex items-center gap-1.5">
-          <span class="font-heading text-xl font-bold tracking-tight text-[#27272E]">nicoguzman</span>
-          <span class="rounded-md bg-[#EBEAFB] px-1.5 py-0.5 font-heading text-xs font-bold text-[#5956E9]">.dev</span>
-        </div>
-        <span class="text-[11px] font-medium text-[#999FAE] -mt-0.5">Digitalización para Negocios</span>
-      </div>
+    <a href="/" class="focus:outline-none">
+      <BrandLogo />
     </a>
 
     <!-- Desktop Nav -->

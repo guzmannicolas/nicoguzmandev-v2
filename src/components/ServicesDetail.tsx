@@ -150,8 +150,7 @@ export default function ServicesDetail() {
         {/* Active Service Showcase Card */}
         <div
           key={currentService.id}
-          className="rounded-3xl bg-white p-7 sm:p-10 lg:p-14 border border-slate-100 shadow-drnube-float transition-all duration-500"
-          data-dr-anim="translate-y"
+          className="rounded-3xl bg-white p-7 sm:p-10 lg:p-14 border border-slate-100 shadow-drnube-float transition-all duration-300"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left: Info & Features */}

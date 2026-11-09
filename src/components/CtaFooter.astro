@@ -1,4 +1,5 @@
 ---
+import BrandLogo from './BrandLogo.astro';
 ---
 
 <!-- Final Conversion CTA + Clean Footer -->
@@ -69,11 +70,8 @@
   <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
     <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
       <div class="space-y-2">
-        <a href="/" class="flex items-center gap-2">
-          <div class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#5956E9] text-white font-heading font-bold text-sm">
-            NG
-          </div>
-          <span class="font-heading text-lg font-bold text-[#27272E]">nicoguzman.dev</span>
+        <a href="/" class="focus:outline-none inline-block">
+          <BrandLogo size="sm" showTagline={false} />
         </a>
         <p class="text-sm text-[#525260] max-w-sm">
           Ayudamos a comercios, profesionales y PyMEs de Argentina a digitalizarse con páginas web modernas, WhatsApp con IA y sistemas a medida.

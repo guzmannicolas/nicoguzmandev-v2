@@ -139,7 +139,7 @@ export default function PricingPlans() {
         </div>
 
         {/* 3 Pricing Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
+        <div data-dr-anim="translate-y" className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
           {plans.map((p) => {
             const price = billingMode === 'unico' ? p.priceUnico : p.priceMensual;
             const sub = billingMode === 'unico' ? p.subUnico : p.subMensual;
@@ -147,8 +147,6 @@ export default function PricingPlans() {
             return (
               <div
                 key={p.name}
-                data-dr-anim="scale-y"
-                data-dr-delay={p.delay}
                 className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 ${
                   p.highlight
                     ? 'bg-[#27272E] text-white shadow-drnube ring-2 ring-[#5956E9]'

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
+import { HelpCircle, ChevronDown, ArrowRight, MessageSquare, Check, Sparkles } from 'lucide-react';
 
 interface FaqItem {
+  id: string;
+  category: string;
   question: string;
   answer: string;
   badge?: string;
@@ -9,55 +11,70 @@ interface FaqItem {
 
 const faqs: FaqItem[] = [
   {
+    id: 'tiempo',
+    category: 'Entrega',
     question: '¿Cuánto tiempo tarda en estar lista mi web?',
     answer:
       'Tu web está lista y 100% online en solo 48 a 72 horas hábiles una vez que nos pasás la información básica de tu negocio (fotos, precios y servicios). Sin demoras ni meses de espera.',
-    badge: '48hs'
+    badge: '48 horas'
   },
   {
+    id: 'mensualidad',
+    category: 'Costos',
     question: '¿Tengo que pagar una mensualidad obligatoria para mantener mi web?',
     answer:
-      'No. Con el Plan Web Express el pago es por única vez. Te entregamos la web llave en mano, el dominio y el hosting quedan funcionando y no te atamos a ninguna suscripción mensual. Si en el futuro querés que hagamos modificaciones grandes o sumes un bot de IA, podés contratarnos por tarea o con plan de soporte.',
+      'No. Con el Plan Web Express el pago es por única vez. Te entregamos la web llave en mano, el dominio y el hosting quedan funcionando y no te atamos a ninguna suscripción mensual obligatoria. La web es 100% tuya. Si más adelante querés sumar un bot de WhatsApp con IA o hacer cambios grandes, podés contratarnos puntualmente o con un abono opcional.',
     badge: 'Sin ataduras'
   },
   {
+    id: 'bot-whatsapp',
+    category: 'WhatsApp IA',
     question: '¿Cómo funciona el bot de WhatsApp? ¿Uso mi propio número?',
     answer:
-      'Sí, funciona directamente con tu número actual de WhatsApp (sea WhatsApp normal o WhatsApp Business), o podemos conectarlo a una línea nueva si preferís separar lo personal de lo comercial. El bot atiende a tus clientes las 24 hs, pasa precios, muestra fotos y deriva a tu teléfono cuando es una consulta compleja.',
-    badge: 'Tu número'
+      'Sí, funciona directamente con tu número actual de WhatsApp (sea normal o WhatsApp Business), o podemos conectarlo a una línea nueva si preferís separar lo personal de lo comercial. El asistente inteligente atiende consultas las 24 hs, pasa precios, muestra fotos de productos y deriva a tu teléfono cuando es una consulta específica.',
+    badge: 'Tu número actual'
   },
   {
-    question: '¿Puedo actualizar precios, fotos y productos yo mismo?',
+    id: 'autogestion',
+    category: 'Gestión',
+    question: '¿Puedo actualizar precios, fotos y productos yo mismo sin saber programar?',
     answer:
-      'Totalmente. Las webs y sistemas están pensados para dueños de negocio, no para programadores. Te entregamos un panel simple o una planilla sincronizada para que puedas cambiar un precio o pausar un producto en 10 segundos desde tu celular.',
+      'Totalmente. Las webs y sistemas están pensados para comerciantes y profesionales, no para programadores. Te entregamos un panel simple o una planilla sincronizada para que puedas cambiar un precio o pausar un producto en 10 segundos desde tu celular.',
     badge: '100% Simple'
   },
   {
+    id: 'pagos',
+    category: 'Costos',
     question: '¿Qué medios de pago aceptan para contratar el servicio?',
     answer:
-      'Aceptamos transferencia bancaria, Mercado Pago (dinero en cuenta y tarjetas de débito/crédito) y USDT si estás en el exterior. Trabajamos con un anticipo del 50% al iniciar y el 50% restante cuando la web o sistema está online y funcionando a tu entera satisfacción.',
-    badge: '50% / 50%'
+      'Aceptamos transferencia bancaria, Mercado Pago (dinero en cuenta y tarjetas de débito/crédito) y USDT / cripto si estás en el exterior. Trabajamos con un anticipo del 50% al iniciar y el 50% restante cuando la web o sistema está online y funcionando a tu entera satisfacción.',
+    badge: '50% y 50%'
   },
   {
+    id: 'garantia',
+    category: 'Soporte',
     question: '¿Qué pasa si necesito ayuda o cambios después del lanzamiento?',
     answer:
-      'Todos nuestros trabajos incluyen 30 días de garantía y soporte directo por WhatsApp. Si surge cualquier duda, ajuste o consulta, nos escribís y lo resolvemos en el día.',
+      'Todos nuestros trabajos incluyen 30 días de garantía y soporte directo por WhatsApp con Nicolás. Si surge cualquier duda, ajuste de texto o consulta técnica, nos escribís y lo resolvemos en el día.',
     badge: 'Garantía 30 días'
   }
 ];
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // Support toggling items with set of open IDs
+  const [openIds, setOpenIds] = useState<string[]>(['tiempo']);
 
-  const toggleIndex = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleItem = (id: string) => {
+    setOpenIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
   };
 
   return (
     <section id="faq" className="relative py-20 lg:py-28 bg-white overflow-hidden">
-      <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+      <div className="relative mx-auto max-w-4xl px-5 sm:px-8 lg:px-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16" data-dr-anim="scale-y">
+        <div className="text-center max-w-3xl mx-auto mb-14" data-dr-anim="scale-y">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#5956E9]/20 bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9] mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Preguntas Frecuentes</span>
@@ -66,43 +83,42 @@ export default function FaqSection() {
             Respuestas claras, <span className="text-[#5956E9]">cero letra chica</span>
           </h2>
           <p className="mt-4 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
-            Todo lo que necesitás saber antes de dar el paso y empezar a digitalizar tu negocio.
+            Hacé clic en cualquier pregunta para ver el detalle de tiempos, pagos y funcionamiento.
           </p>
         </div>
 
-        {/* Accordion List */}
+        {/* Accordion List - Notice: NO data-dr-anim on children so React re-renders never wipe opacity/transform! */}
         <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+          {faqs.map((faq) => {
+            const isOpen = openIds.includes(faq.id);
             return (
               <div
-                key={index}
-                className={`rounded-2xl transition-all duration-300 border ${
+                key={faq.id}
+                className={`rounded-2xl transition-all duration-200 border ${
                   isOpen
-                    ? 'bg-[#F6F8FF] border-[#5956E9]/30 shadow-md'
-                    : 'bg-white border-slate-200/80 hover:border-slate-300 hover:bg-slate-50/50'
+                    ? 'bg-[#F6F8FF] border-[#5956E9]/40 shadow-md ring-1 ring-[#5956E9]/10'
+                    : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/70 shadow-xs'
                 }`}
-                data-dr-anim="translate-y"
               >
                 <button
                   type="button"
-                  onClick={() => toggleIndex(index)}
-                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  onClick={() => toggleItem(faq.id)}
+                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <div className="flex items-center gap-3.5 pr-2">
+                  <div className="flex items-center gap-3 pr-2">
                     {faq.badge && (
-                      <span className="hidden sm:inline-block rounded-full bg-[#EBEAFB] px-3 py-1 text-xs font-bold text-[#5956E9]">
+                      <span className="hidden sm:inline-block rounded-full bg-[#EBEAFB] px-2.5 py-0.5 text-xs font-bold text-[#5956E9] flex-shrink-0">
                         {faq.badge}
                       </span>
                     )}
-                    <h3 className="font-heading text-lg sm:text-xl font-bold text-[#27272E]">
+                    <h3 className="font-heading text-base sm:text-lg font-bold text-[#27272E] leading-snug">
                       {faq.question}
                     </h3>
                   </div>
 
                   <div
-                    className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center transition-transform duration-300 ${
+                    className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center transition-transform duration-200 ${
                       isOpen
                         ? 'bg-[#5956E9] text-white rotate-180'
                         : 'bg-slate-100 text-[#525260]'
@@ -113,8 +129,8 @@ export default function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 sm:px-7 sm:pb-7 -mt-2">
-                    <p className="text-base sm:text-lg text-[#525260] leading-relaxed border-t border-slate-200/60 pt-4">
+                  <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-1 border-t border-slate-200/70 animate-fadeIn">
+                    <p className="text-sm sm:text-base text-[#525260] leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>

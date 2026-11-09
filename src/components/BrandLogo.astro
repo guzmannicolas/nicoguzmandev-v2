@@ -1,0 +1,106 @@
+---
+interface Props {
+  variant?: 'light' | 'dark';
+  size?: 'sm' | 'md' | 'lg';
+  showTagline?: boolean;
+}
+
+const { variant = 'light', size = 'md', showTagline = true } = Astro.props;
+
+const isDark = variant === 'dark';
+---
+
+<div class="group flex items-center gap-3 select-none">
+  <!-- Iconic Modern Geometric Brand Mark (Custom SVG) -->
+  <div class="relative flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+    <!-- Ambient Glow -->
+    <div
+      class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-[#5956E9] via-[#7C3AED] to-[#38BDF8] opacity-35 blur-sm transition-opacity duration-300 group-hover:opacity-60"
+    ></div>
+
+    <!-- Mark Container -->
+    <svg
+      class="relative h-10 w-10 sm:h-11 sm:w-11 rounded-2xl shadow-md shadow-[#5956E9]/20"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#0F054B" />
+          <stop offset="100%" stop-color="#241B72" />
+        </linearGradient>
+
+        <linearGradient id="primaryStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#38BDF8" />
+          <stop offset="50%" stop-color="#5956E9" />
+          <stop offset="100%" stop-color="#C084FC" />
+        </linearGradient>
+
+        <linearGradient id="accentBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FFDC60" />
+          <stop offset="100%" stop-color="#FAB8C4" />
+        </linearGradient>
+
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      <!-- Rounded Background Tile with Subtle Glass Inner Border -->
+      <rect width="48" height="48" rx="14" fill="url(#bgGrad)" />
+      <rect x="0.75" y="0.75" width="46.5" height="46.5" rx="13.25" stroke="white" stroke-opacity="0.12" stroke-width="1.5" />
+
+      <!-- Isometric / Geometric Monogram "N" & Forward Growth Vector -->
+      <!-- Left Column Pillar -->
+      <path
+        d="M13 34V15C13 13.8954 13.8954 13 15 13H16C17.1046 13 18 13.8954 18 15V34C18 35.1046 17.1046 36 16 36H15C13.8954 36 13 35.1046 13 34Z"
+        fill="url(#primaryStroke)"
+      />
+
+      <!-- Diagonal Dynamic Beam connecting N -->
+      <path
+        d="M17 14.5L31.2 32.5C31.8 33.25 33 32.85 33 31.9V14C33 13.4477 33.4477 13 34 13H34.5C35.0523 13 35.5 13.4477 35.5 14V33C35.5 34.1046 34.6046 35 33.5 35H32.2C31.3 35 30.5 34.55 30 33.9L15.8 15.9C15.2 15.15 14 15.55 14 16.5V17"
+        fill="url(#primaryStroke)"
+      />
+
+      <!-- Right Column Pillar -->
+      <path
+        d="M30 15V34C30 35.1046 30.8954 36 32 36H33C34.1046 36 35 35.1046 35 34V15C35 13.8954 34.1046 13 33 13H32C30.8954 13 30 13.8954 30 15Z"
+        fill="white"
+        fill-opacity="0.9"
+      />
+
+      <!-- Floating Tech Spark / Digital Node -->
+      <circle cx="34" cy="14" r="2.5" fill="url(#accentBeam)" filter="url(#glow)" />
+    </svg>
+  </div>
+
+  <!-- Brand Typography -->
+  <div class="flex flex-col">
+    <div class="flex items-center gap-1.5">
+      <span
+        class={`font-heading text-xl sm:text-[22px] font-extrabold tracking-tight ${
+          isDark ? 'text-white' : 'text-[#27272E]'
+        }`}
+      >
+        nico<span class="text-[#5956E9]">guzman</span>
+      </span>
+      <span
+        class="inline-flex items-center rounded-md bg-gradient-to-r from-[#5956E9]/15 to-[#7C3AED]/15 px-1.5 py-0.5 font-heading text-[11px] font-extrabold tracking-wide text-[#5956E9] border border-[#5956E9]/20"
+      >
+        .dev
+      </span>
+    </div>
+    {showTagline && (
+      <span
+        class={`text-[11px] font-medium tracking-tight -mt-0.5 ${
+          isDark ? 'text-slate-400' : 'text-[#999FAE]'
+        }`}
+      >
+        Digitalización de Negocios
+      </span>
+    )}
+  </div>
+</div>
