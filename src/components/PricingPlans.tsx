@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Check, Sparkles, ArrowRight } from 'lucide-react';
 
 export default function PricingPlans() {
   const [billingMode, setBillingMode] = useState<'unico' | 'mensual'>('unico');
@@ -16,7 +17,7 @@ export default function PricingPlans() {
       description:
         'Tu página web profesional lista en 48 horas con diseño moderno y adaptada a celulares.',
       features: [
-        'Web completa con tus fotos, servicios y precios en ARS',
+        'Web completa con fotos, servicios y precios en ARS',
         'Adaptada 100% a celulares (carga en menos de 1 segundo)',
         'Botón directo a tu WhatsApp para recibir clientes listos',
         'Dominio propio, hosting de alta velocidad y certificado SSL',
@@ -27,7 +28,7 @@ export default function PricingPlans() {
         'https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20empezar%20con%20el%20Pack%20Web%20Express%20para%20mi%20negocio.',
     },
     {
-      badge: 'El Más Elegido · Digitalización Total ⭐',
+      badge: 'El Más Elegido · Digitalización Total',
       name: 'Web + Bot WhatsApp con IA',
       highlight: true,
       delay: '200',
@@ -74,7 +75,6 @@ export default function PricingPlans() {
 
   return (
     <section id="planes" className="relative py-20 lg:py-28 bg-[#F6F8FF] overflow-hidden">
-      {/* Rellax Floating Spheres */}
       <div
         data-parallax-speed="-1.5"
         className="pointer-events-none absolute top-16 left-[8%] h-20 w-20 rounded-full bg-[#FAB8C4]/45"
@@ -91,7 +91,8 @@ export default function PricingPlans() {
             data-dr-anim="scale-y"
             className="inline-flex items-center gap-2 rounded-full bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9]"
           >
-            Precios Claros en Pesos
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Precios Claros en Pesos</span>
           </div>
           <h2
             data-dr-anim="scale-y"
@@ -114,7 +115,7 @@ export default function PricingPlans() {
               <button
                 type="button"
                 onClick={() => setBillingMode('unico')}
-                className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
+                className={`rounded-full px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
                   billingMode === 'unico'
                     ? 'bg-[#5956E9] text-white shadow-sm'
                     : 'text-[#525260] hover:text-[#27272E]'
@@ -125,7 +126,7 @@ export default function PricingPlans() {
               <button
                 type="button"
                 onClick={() => setBillingMode('mensual')}
-                className={`rounded-full px-5 py-2 text-xs font-bold transition-all ${
+                className={`rounded-full px-5 py-2 text-xs font-bold transition-all cursor-pointer ${
                   billingMode === 'mensual'
                     ? 'bg-[#5956E9] text-white shadow-sm'
                     : 'text-[#525260] hover:text-[#27272E]'
@@ -155,7 +156,8 @@ export default function PricingPlans() {
                 }`}
               >
                 {p.highlight && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#5956E9] px-4 py-1 text-xs font-bold text-white uppercase tracking-wider shadow-sm">
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#5956E9] px-4 py-1 text-xs font-bold text-white uppercase tracking-wider shadow-sm flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5" />
                     Recomendado
                   </span>
                 )}
@@ -208,7 +210,7 @@ export default function PricingPlans() {
                     {p.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
                         <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs mt-0.5">
-                          ✓
+                          <Check className="w-3.5 h-3.5" />
                         </span>
                         <span
                           className={p.highlight ? 'text-slate-200' : 'text-[#525260]'}
@@ -225,13 +227,14 @@ export default function PricingPlans() {
                     href={p.waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full inline-flex items-center justify-center rounded-full py-4 text-sm font-bold transition-all duration-300 ${
+                    className={`w-full inline-flex items-center justify-center gap-2 rounded-full py-4 text-sm font-bold transition-all duration-300 ${
                       p.highlight
                         ? 'bg-[#5956E9] text-white shadow-drnube-btn hover:bg-[#6355F3]'
                         : 'bg-[#27272E] text-white hover:bg-[#5956E9]'
                     }`}
                   >
-                    {p.ctaText}
+                    <span>{p.ctaText}</span>
+                    <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
               </div>

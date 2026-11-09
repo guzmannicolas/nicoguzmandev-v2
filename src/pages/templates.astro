@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import TemplatesShowroom from '../components/TemplatesShowroom.tsx';
+import CtaFooter from '../components/CtaFooter.astro';
+---
+
+<Layout
+  title="Showroom de Templates | NicoGuzman.dev"
+  description="Probá 8 demos en vivo de páginas web para barberías, restaurantes, talleres, inmobiliarias, consultorios y profesionales."
+>
+  <Header currentPath="/templates" />
+  <main class="pt-28 lg:pt-36 bg-drnube-mesh">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 text-center mb-6">
+      <span class="inline-flex items-center gap-2 rounded-full border border-[#5956E9]/20 bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9] mb-4">
+        Demos en Vivo
+      </span>
+      <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#27272E] leading-tight">
+        Elegí el diseño ideal para <span class="text-[#5956E9]">tu rubro</span>
+      </h1>
+      <p class="mt-4 text-lg sm:text-xl text-[#525260] max-w-2xl mx-auto font-normal">
+        Todas nuestras páginas web se entregan adaptadas a celulares, con tus datos, fotos y lista de precios en 48 horas.
+      </p>
+    </div>
+
+    <TemplatesShowroom client:load />
+    <CtaFooter />
+  </main>
+</Layout>

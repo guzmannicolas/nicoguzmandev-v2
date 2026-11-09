@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { Globe, Bot, LayoutDashboard, MapPin, Check, ArrowRight, Zap, ShieldCheck, Clock, Sparkles } from 'lucide-react';
 
 interface ServiceItem {
   id: string;
   category: string;
   badge: string;
   badgeColor: string;
-  badgeText: string;
   title: string;
   tagline: string;
   description: string;
@@ -21,7 +21,6 @@ const services: ServiceItem[] = [
     category: 'Presencia Online',
     badge: 'ENTREGA EN 48 HORAS',
     badgeColor: 'bg-[#FFDC60]/40 text-[#855B00] border-[#FFDC60]',
-    badgeText: '48hs',
     title: 'Páginas Web Profesionales de Alta Conversión',
     tagline: 'Tu vidriera abierta al mundo las 24 hs, lista para vender.',
     description:
@@ -42,7 +41,6 @@ const services: ServiceItem[] = [
     category: 'Inteligencia Artificial',
     badge: 'ATENCIÓN 24/7 SIN DESCANSO',
     badgeColor: 'bg-[#FAB8C4]/40 text-[#9E1B32] border-[#FAB8C4]',
-    badgeText: 'IA 24/7',
     title: 'Agente de WhatsApp con Inteligencia Artificial',
     tagline: 'Atendé, cotizá y cerrá ventas mientras estás ocupado o dormís.',
     description:
@@ -63,7 +61,6 @@ const services: ServiceItem[] = [
     category: 'Gestión y Automatización',
     badge: 'CHAU PLANILLAS Y CUADERNOS',
     badgeColor: 'bg-[#EBEAFB] text-[#5956E9] border-[#5956E9]/20',
-    badgeText: 'Orden Total',
     title: 'Sistemas a Medida, CRM y Control de Stock',
     tagline: 'Todo tu negocio en una sola pantalla, simple y accesible desde el celular.',
     description:
@@ -84,7 +81,6 @@ const services: ServiceItem[] = [
     category: 'Visibilidad Local',
     badge: 'PRIMEROS PUESTOS EN GOOGLE',
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    badgeText: 'Local SEO',
     title: 'Google Maps y Posicionamiento de Negocio Local',
     tagline: 'Aparecé primero cuando alguien busque tu servicio en tu barrio o ciudad.',
     description:
@@ -93,7 +89,7 @@ const services: ServiceItem[] = [
     image: '/images/mockup-macbook-dashboard.jpg',
     features: [
       'Configuración profesional de tu perfil en Google Maps con palabras clave locales',
-      'Estrategia automática para conseguir reseñas positivas de 5 estrellas',
+      'Estrategia para conseguir reseñas positivas de 5 estrellas',
       'Enlace directo a tu catálogo web y botón de llamado inmediato',
       'Estadísticas claras de cuánta gente te buscó y llamó en el mes'
     ],
@@ -106,24 +102,19 @@ export default function ServicesDetail() {
   const currentService = services.find((s) => s.id === activeTab) || services[0];
 
   return (
-    <section id="servicios" className="relative py-28 bg-[#F6F8FF] overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[400px] bg-gradient-to-b from-white to-transparent pointer-events-none" />
-      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-[#FAB8C4]/20 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -left-32 w-96 h-96 rounded-full bg-[#5956E9]/10 blur-3xl pointer-events-none" />
-
+    <section id="servicios" className="relative py-20 lg:py-28 bg-[#F6F8FF] overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16" data-dr-anim="scale-y">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#5956E9]/20 bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9] mb-4">
-            <span className="h-2 w-2 rounded-full bg-[#5956E9] animate-pulse"></span>
+            <Sparkles className="w-3.5 h-3.5 text-[#5956E9]" />
             Servicios Integrales
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#27272E] leading-[1.08]">
             Todo lo que tu negocio necesita para <span className="text-[#5956E9]">vender en digital</span>
           </h2>
-          <p className="mt-5 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
-            No necesitás saber de programación ni perder meses en reuniones. Nosotros armamos todo, lo dejamos funcionando y te acompañamos paso a paso.
+          <p className="mt-4 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
+            Sin jerga técnica. Diseñamos, configuramos y dejamos todo listo para que empieces a facturar online.
           </p>
         </div>
 
@@ -141,11 +132,15 @@ export default function ServicesDetail() {
                     : 'bg-white text-[#525260] hover:text-[#27272E] hover:bg-slate-50 border border-slate-200/80 shadow-sm'
                 }`}
               >
-                <span
-                  className={`h-2 w-2 rounded-full ${
-                    isActive ? 'bg-[#FFDC60]' : 'bg-slate-300'
-                  }`}
-                />
+                {service.id === 'webs-express' ? (
+                  <Globe className="w-4 h-4" />
+                ) : service.id === 'whatsapp-ia' ? (
+                  <Bot className="w-4 h-4" />
+                ) : service.id === 'sistemas-gestion' ? (
+                  <LayoutDashboard className="w-4 h-4" />
+                ) : (
+                  <MapPin className="w-4 h-4" />
+                )}
                 <span>{service.category}</span>
               </button>
             );
@@ -202,8 +197,8 @@ export default function ServicesDetail() {
                 <div className="grid grid-cols-1 gap-2.5">
                   {currentService.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 text-xs font-bold">
-                        ✓
+                      <div className="flex-shrink-0 mt-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                        <Check className="w-3.5 h-3.5" />
                       </div>
                       <span className="text-sm sm:text-base font-medium text-[#27272E]">
                         {feature}
@@ -219,13 +214,13 @@ export default function ServicesDetail() {
                   href={`https://wa.me/5491100000000?text=${encodeURIComponent(currentService.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-[#5956E9] px-7 py-3.5 text-sm sm:text-base font-bold text-white shadow-md shadow-[#5956E9]/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4441C8]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#5956E9] px-7 py-3.5 text-sm sm:text-base font-bold text-white shadow-md shadow-[#5956E9]/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#4441C8]"
                 >
                   <span>Consultar por este servicio</span>
-                  <span className="text-lg">→</span>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
-                  href="#planes"
+                  href="/precios"
                   className="rounded-full bg-slate-100 px-6 py-3.5 text-sm sm:text-base font-semibold text-[#27272E] transition-all hover:bg-slate-200"
                 >
                   Ver Precios Transparentes
@@ -233,7 +228,7 @@ export default function ServicesDetail() {
               </div>
             </div>
 
-            {/* Right: Visual Mockup with Floating Badges */}
+            {/* Right: Visual Mockup */}
             <div className="lg:col-span-5 relative">
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-white p-2 border border-slate-200 shadow-xl group">
                 <img
@@ -243,7 +238,6 @@ export default function ServicesDetail() {
                   loading="lazy"
                 />
 
-                {/* Floating pill over image */}
                 <div className="absolute bottom-5 left-5 right-5 rounded-xl bg-white/95 backdrop-blur-md p-3.5 border border-white/60 shadow-lg flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <span className="flex h-3 w-3 rounded-full bg-emerald-500 animate-ping" />
@@ -261,11 +255,11 @@ export default function ServicesDetail() {
           </div>
         </div>
 
-        {/* 4 Quick Value Proposition Cards Below */}
+        {/* 4 Feature Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-10 w-10 rounded-xl bg-[#FFDC60]/40 flex items-center justify-center font-heading font-bold text-[#855B00] mb-4 text-lg">
-              ⚡
+          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm">
+            <div className="h-10 w-10 rounded-xl bg-[#FFDC60]/40 flex items-center justify-center text-[#855B00] mb-4">
+              <Zap className="w-5 h-5" />
             </div>
             <h4 className="font-heading font-bold text-lg text-[#27272E]">Velocidad Real</h4>
             <p className="mt-1 text-sm text-[#525260]">
@@ -273,29 +267,29 @@ export default function ServicesDetail() {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-10 w-10 rounded-xl bg-[#FAB8C4]/40 flex items-center justify-center font-heading font-bold text-[#9E1B32] mb-4 text-lg">
-              💬
+          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm">
+            <div className="h-10 w-10 rounded-xl bg-[#FAB8C4]/40 flex items-center justify-center text-[#9E1B32] mb-4">
+              <Bot className="w-5 h-5" />
             </div>
             <h4 className="font-heading font-bold text-lg text-[#27272E]">WhatsApp Directo</h4>
             <p className="mt-1 text-sm text-[#525260]">
-              Tus clientes no tienen que registrarse; te compran directo con un click.
+              Tus clientes no tienen que registrarse; compran directo con un clic.
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-10 w-10 rounded-xl bg-[#EBEAFB] flex items-center justify-center font-heading font-bold text-[#5956E9] mb-4 text-lg">
-              🎯
+          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm">
+            <div className="h-10 w-10 rounded-xl bg-[#EBEAFB] flex items-center justify-center text-[#5956E9] mb-4">
+              <Clock className="w-5 h-5" />
             </div>
             <h4 className="font-heading font-bold text-lg text-[#27272E]">Fácil de Usar</h4>
             <p className="mt-1 text-sm text-[#525260]">
-              Te entregamos todo listo y te mostramos cómo cambiar fotos y precios en 15 minutos.
+              Te entregamos todo listo y te mostramos cómo actualizar precios en 15 minutos.
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-            <div className="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center font-heading font-bold text-emerald-700 mb-4 text-lg">
-              🛡️
+          <div className="rounded-2xl bg-white p-6 border border-slate-100 shadow-sm">
+            <div className="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 mb-4">
+              <ShieldCheck className="w-5 h-5" />
             </div>
             <h4 className="font-heading font-bold text-lg text-[#27272E]">30 Días de Garantía</h4>
             <p className="mt-1 text-sm text-[#525260]">

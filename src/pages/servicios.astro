@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ServicesDetail from '../components/ServicesDetail.tsx';
+import TransformationComparison from '../components/TransformationComparison.tsx';
+import CtaFooter from '../components/CtaFooter.astro';
+---
+
+<Layout
+  title="Servicios | NicoGuzman.dev - Digitalización de Negocios"
+  description="Webs express en 48hs, bots de WhatsApp con inteligencia artificial, sistemas de gestión y posicionamiento en Google Maps."
+>
+  <Header currentPath="/servicios" />
+  <main class="pt-20">
+    <ServicesDetail client:load />
+    <TransformationComparison client:visible />
+    <CtaFooter />
+  </main>
+</Layout>

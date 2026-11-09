@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HelpCircle, ChevronDown, ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
 
 interface FaqItem {
   question: string;
@@ -16,7 +17,7 @@ const faqs: FaqItem[] = [
   {
     question: '¿Tengo que pagar una mensualidad obligatoria para mantener mi web?',
     answer:
-      '¡No! Con el Plan Web Express el pago es por única vez. Te entregamos la web llave en mano, el dominio y el hosting quedan funcionando y no te atamos a ninguna suscripción mensual. Si en el futuro querés que hagamos modificaciones grandes o sumes un bot de IA, podés contratarnos por tarea o con plan de soporte.',
+      'No. Con el Plan Web Express el pago es por única vez. Te entregamos la web llave en mano, el dominio y el hosting quedan funcionando y no te atamos a ninguna suscripción mensual. Si en el futuro querés que hagamos modificaciones grandes o sumes un bot de IA, podés contratarnos por tarea o con plan de soporte.',
     badge: 'Sin ataduras'
   },
   {
@@ -28,13 +29,13 @@ const faqs: FaqItem[] = [
   {
     question: '¿Puedo actualizar precios, fotos y productos yo mismo?',
     answer:
-      '¡Totalmente! Las webs y sistemas están pensados para dueños de negocio, no para programadores. Te entregamos un panel simple o una planilla sincronizada para que puedas cambiar un precio o pausar un producto en 10 segundos desde tu celular.',
+      'Totalmente. Las webs y sistemas están pensados para dueños de negocio, no para programadores. Te entregamos un panel simple o una planilla sincronizada para que puedas cambiar un precio o pausar un producto en 10 segundos desde tu celular.',
     badge: '100% Simple'
   },
   {
     question: '¿Qué medios de pago aceptan para contratar el servicio?',
     answer:
-      'Aceptamos transferencia bancaria, Mercado Pago (dinero en cuenta y tarjetas de débito/crédito) y USDT / cripto si estás en el exterior. Trabajamos con un anticipo del 50% al iniciar y el 50% restante cuando la web o sistema está online y funcionando a tu entera satisfacción.',
+      'Aceptamos transferencia bancaria, Mercado Pago (dinero en cuenta y tarjetas de débito/crédito) y USDT si estás en el exterior. Trabajamos con un anticipo del 50% al iniciar y el 50% restante cuando la web o sistema está online y funcionando a tu entera satisfacción.',
     badge: '50% / 50%'
   },
   {
@@ -53,17 +54,18 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="relative py-28 bg-white overflow-hidden">
+    <section id="faq" className="relative py-20 lg:py-28 bg-white overflow-hidden">
       <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16" data-dr-anim="scale-y">
           <span className="inline-flex items-center gap-2 rounded-full border border-[#5956E9]/20 bg-[#EBEAFB] px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#5956E9] mb-4">
-            Preguntas Frecuentes
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>Preguntas Frecuentes</span>
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#27272E] leading-[1.08]">
             Respuestas claras, <span className="text-[#5956E9]">cero letra chica</span>
           </h2>
-          <p className="mt-5 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
+          <p className="mt-4 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
             Todo lo que necesitás saber antes de dar el paso y empezar a digitalizar tu negocio.
           </p>
         </div>
@@ -100,13 +102,13 @@ export default function FaqSection() {
                   </div>
 
                   <div
-                    className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center font-bold text-base transition-transform duration-300 ${
+                    className={`flex-shrink-0 h-8 w-8 rounded-full flex items-center justify-center transition-transform duration-300 ${
                       isOpen
                         ? 'bg-[#5956E9] text-white rotate-180'
                         : 'bg-slate-100 text-[#525260]'
                     }`}
                   >
-                    ▾
+                    <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
 
@@ -138,8 +140,9 @@ export default function FaqSection() {
             rel="noopener noreferrer"
             className="flex-shrink-0 inline-flex items-center gap-2 rounded-full bg-[#5956E9] px-7 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-[#5956E9]/40 hover:bg-[#4441C8] transition-all hover:scale-105"
           >
+            <MessageSquare className="w-4 h-4" />
             <span>Escribir por WhatsApp</span>
-            <span>→</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </div>

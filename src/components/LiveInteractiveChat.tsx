@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Bot, CreditCard, BarChart3, ArrowRight, Lock, Phone, MoreVertical, Send, CheckCheck, Sparkles, Zap, ShieldCheck, Check } from 'lucide-react';
 
 interface ChatMessage {
   id: string;
@@ -17,41 +18,44 @@ interface ChatMessage {
 const scenarioOptions = [
   {
     id: 'precios',
-    buttonLabel: '💵 ¿Cuánto sale una web?',
-    clientMessage: 'Hola! Cuánto sale hacer una web para mi negocio y cuánto tardan?',
+    iconType: 'credit-card',
+    buttonLabel: '¿Cuánto sale una web?',
+    clientMessage: 'Hola, ¿cuánto cuesta hacer una página web para mi negocio y cuánto tardan?',
     botReply:
-      '¡Hola! 👋 Diseñamos tu web lista para vender en solo 48 horas hábiles. Incluye dominio, hosting de alta velocidad, catálogo y botón de WhatsApp.',
+      '¡Hola! Diseñamos tu web profesional lista para vender en solo 48 horas hábiles. Incluye dominio propio, hosting de alta velocidad, catálogo y botón directo a WhatsApp.',
     productCard: {
       title: 'Plan Web Express 48hs',
       price: '$180.000 ARS',
       desc: 'Entrega llave en mano con catálogo y botón de WhatsApp.',
-      tag: '🔥 Más Elegido'
+      tag: 'Más Elegido'
     }
   },
   {
     id: 'bot-ia',
-    buttonLabel: '🤖 ¿Cómo funciona el Bot de WhatsApp?',
-    clientMessage: 'Cómo funciona el bot de IA? Puede tomar pedidos o turnos?',
+    iconType: 'bot',
+    buttonLabel: '¿Cómo funciona el Bot de WhatsApp?',
+    clientMessage: '¿Cómo funciona el asistente de IA? ¿Puede tomar pedidos o turnos automáticos?',
     botReply:
-      '¡Totalmente! 🤖 El bot atiende las 24 hs los 7 días de la semana. Responde dudas, envía fotos de productos, cotizaciones y agenda citas directo en tu Google Calendar sin que tengas que tocar el teléfono.',
+      '¡Totalmente! El bot atiende las 24 horas, los 7 días de la semana. Responde dudas, envía fotos de productos, cotizaciones y agenda citas directo en tu Google Calendar sin que tengas que atender el teléfono.',
     productCard: {
-      title: 'Bot de WhatsApp con IA',
+      title: 'Agente de WhatsApp con IA',
       price: 'Atención 24/7',
       desc: 'Cero demora de espera. Derivación automática a tu celular personal.',
-      tag: '⚡ 100% Automático'
+      tag: '100% Automático'
     }
   },
   {
     id: 'sistema',
-    buttonLabel: '📊 Quiero ordenar mi negocio (Chau Excel)',
-    clientMessage: 'Tengo un quilombo de planillas y stock. Tienen algún sistema simple?',
+    iconType: 'chart',
+    buttonLabel: 'Quiero ordenar mi negocio (Chau Excel)',
+    clientMessage: 'Tengo un desorden de planillas y stock. ¿Tienen algún sistema simple para gestionarlo?',
     botReply:
-      '¡Sí! 🚀 Desarrollamos paneles a medida súper sencillos para que controles desde el celular tus clientes, stock crítico, cobros diarios y recordatorios automáticos por WhatsApp.',
+      '¡Sí! Desarrollamos paneles a medida accesibles desde el celular para que controles clientes, stock crítico, cobros diarios y recordatorios automáticos por WhatsApp.',
     productCard: {
       title: 'Sistema de Gestión / CRM',
       price: 'A Medida',
       desc: 'Tus ventas, clientes y stock centralizados en una sola pantalla.',
-      tag: '✨ Todo en 1'
+      tag: 'Todo en Uno'
     }
   }
 ];
@@ -107,7 +111,7 @@ export default function LiveInteractiveChat() {
           productCard: scenario.productCard
         }
       ]);
-    }, 1200);
+    }, 1100);
   };
 
   useEffect(() => {
@@ -115,19 +119,19 @@ export default function LiveInteractiveChat() {
   }, [messages, isTyping]);
 
   return (
-    <section id="simulador-ia" className="relative py-28 bg-white overflow-hidden">
+    <section id="simulador-ia" className="relative py-24 bg-white overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16" data-dr-anim="scale-y">
+        <div className="text-center max-w-3xl mx-auto mb-14" data-dr-anim="scale-y">
           <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-700 mb-4">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
-            Simulador en Vivo
+            Simulador Interactivo
           </span>
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#27272E] leading-[1.08]">
             Mirá cómo responde tu <span className="text-[#5956E9]">Bot de WhatsApp</span>
           </h2>
-          <p className="mt-5 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
-            Hacé click en cualquiera de las consultas para ver la velocidad con la que la Inteligencia Artificial atiende y cierra ventas en tiempo real.
+          <p className="mt-4 text-lg sm:text-xl text-[#525260] font-normal leading-relaxed">
+            Hacé clic en cualquiera de las consultas para simular la velocidad con la que la Inteligencia Artificial atiende y cierra ventas.
           </p>
         </div>
 
@@ -137,7 +141,7 @@ export default function LiveInteractiveChat() {
           <div className="lg:col-span-6 space-y-6">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#999FAE]">
-                Paso 1: Elegí una pregunta para probarlo
+                Seleccioná una consulta de ejemplo:
               </span>
               <div className="flex flex-col gap-3">
                 {scenarioOptions.map((scenario, idx) => {
@@ -149,25 +153,35 @@ export default function LiveInteractiveChat() {
                       disabled={isTyping}
                       className={`text-left rounded-2xl p-4 sm:p-5 transition-all duration-300 border flex items-center justify-between cursor-pointer ${
                         isSelected
-                          ? 'bg-[#5956E9] text-white border-[#5956E9] shadow-lg shadow-[#5956E9]/25 scale-[1.02]'
+                          ? 'bg-[#5956E9] text-white border-[#5956E9] shadow-lg shadow-[#5956E9]/25 scale-[1.01]'
                           : 'bg-[#F6F8FF] text-[#27272E] border-slate-200/80 hover:bg-white hover:border-[#5956E9]/40 hover:shadow-md'
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xl sm:text-2xl">
-                          {scenario.id === 'precios' ? '⚡' : scenario.id === 'bot-ia' ? '💬' : '📊'}
-                        </span>
+                        <div
+                          className={`flex h-10 w-10 items-center justify-center rounded-xl ${
+                            isSelected ? 'bg-white/15 text-white' : 'bg-white text-[#5956E9] border border-slate-200/60'
+                          }`}
+                        >
+                          {scenario.iconType === 'credit-card' ? (
+                            <CreditCard className="w-5 h-5" />
+                          ) : scenario.iconType === 'bot' ? (
+                            <Bot className="w-5 h-5" />
+                          ) : (
+                            <BarChart3 className="w-5 h-5" />
+                          )}
+                        </div>
                         <div>
                           <p className={`font-heading font-bold text-base sm:text-lg ${isSelected ? 'text-white' : 'text-[#27272E]'}`}>
                             {scenario.buttonLabel}
                           </p>
                           <p className={`text-xs mt-0.5 ${isSelected ? 'text-white/80' : 'text-[#525260]'}`}>
-                            Click para simular respuesta en vivo
+                            Click para probar respuesta en vivo
                           </p>
                         </div>
                       </div>
-                      <span className={`text-lg font-bold ${isSelected ? 'text-[#FFDC60]' : 'text-slate-400'}`}>
-                        {isSelected ? '● Activo' : 'Probar →'}
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${isSelected ? 'bg-white/20 text-white' : 'text-[#5956E9] bg-white border border-slate-200'}`}>
+                        {isSelected ? 'Activo' : 'Probar'}
                       </span>
                     </button>
                   );
@@ -178,22 +192,30 @@ export default function LiveInteractiveChat() {
             {/* Benefit Box */}
             <div className="rounded-2xl bg-[#EBEAFB] p-6 border border-[#5956E9]/20 space-y-3">
               <div className="flex items-center gap-2 text-sm font-bold text-[#5956E9]">
-                <span>✓ Ventajas de automatizar tu WhatsApp:</span>
+                <ShieldCheck className="w-4 h-4 text-[#5956E9]" />
+                <span>Ventajas de automatizar tu WhatsApp:</span>
               </div>
-              <ul className="text-sm text-[#27272E] space-y-1.5 font-medium">
-                <li>• Nunca más perdés una venta a las 11 de la noche ni un domingo.</li>
-                <li>• No pagás empleados de atención ni estás esclavizado al teléfono.</li>
-                <li>• Funciona con tu número actual de WhatsApp Business o normal.</li>
+              <ul className="text-sm text-[#27272E] space-y-2 font-medium">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#5956E9]"></span>
+                  Atención inmediata incluso feriados y fines de semana.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#5956E9]"></span>
+                  Sin costos de empleados fijos de atención al cliente.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#5956E9]"></span>
+                  Funciona con tu número actual de WhatsApp comercial.
+                </li>
               </ul>
               <div className="pt-2">
                 <a
-                  href="https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20probar%20un%20bot%20de%20WhatsApp%20para%20mi%20negocio."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/precios"
                   className="inline-flex items-center gap-2 rounded-full bg-[#5956E9] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#4441C8] transition-all"
                 >
-                  <span>Quiero mi propio Bot de WhatsApp</span>
-                  <span>→</span>
+                  <span>Ver Planes con Bot de IA</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
@@ -202,14 +224,14 @@ export default function LiveInteractiveChat() {
           {/* Right Column: High-End Smartphone Frame Simulator */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="w-full max-w-sm rounded-[42px] bg-[#1F2937] p-3 shadow-2xl ring-1 ring-slate-900/10 border-4 border-slate-700/50 relative">
-              {/* Phone Dynamic Island / Camera */}
+              {/* Dynamic Island */}
               <div className="absolute top-6 left-1/2 -translate-x-1/2 h-5 w-28 bg-black rounded-full z-20 flex items-center justify-end px-3">
                 <div className="h-2 w-2 rounded-full bg-[#5956E9]/60"></div>
               </div>
 
               {/* Screen Container */}
-              <div className="overflow-hidden rounded-[34px] bg-[#0B141B] flex flex-col h-[580px] shadow-inner">
-                {/* WhatsApp Top Header Bar */}
+              <div className="overflow-hidden rounded-[34px] bg-[#0B141B] flex flex-col h-[560px] shadow-inner">
+                {/* Header Bar */}
                 <div className="bg-[#1F2C34] pt-8 pb-3 px-4 flex items-center justify-between border-b border-white/5 z-10">
                   <div className="flex items-center gap-3">
                     <div className="relative">
@@ -223,35 +245,36 @@ export default function LiveInteractiveChat() {
                         <span className="text-white font-heading font-semibold text-sm">
                           Bot NicoGuzman.dev
                         </span>
-                        <span className="text-emerald-400 text-xs">✓</span>
+                        <span className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-500 text-white">
+                          <Check className="w-2.5 h-2.5 stroke-[3]" />
+                        </span>
                       </div>
                       <p className="text-[11px] text-emerald-400 font-medium">
-                        {isTyping ? 'escribiendo respuesta...' : 'en línea las 24 horas'}
+                        {isTyping ? 'escribiendo respuesta...' : 'en línea 24/7'}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 text-slate-400 text-sm">
-                    <span>📞</span>
-                    <span>⋮</span>
+                  <div className="flex items-center gap-3 text-slate-400">
+                    <Phone className="w-4 h-4" />
+                    <MoreVertical className="w-4 h-4" />
                   </div>
                 </div>
 
-                {/* WhatsApp Chat Body with Wallpaper Texture */}
+                {/* Chat Body */}
                 <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-[#0B141B] text-sm">
-                  {/* Security Notification Pill */}
                   <div className="text-center my-1">
-                    <span className="rounded-lg bg-[#182229] px-3 py-1 text-[10px] text-[#8696A0] inline-block shadow-sm">
-                      🔒 Los mensajes están cifrados de extremo a extremo
+                    <span className="rounded-lg bg-[#182229] px-3 py-1 text-[10px] text-[#8696A0] inline-flex items-center gap-1 shadow-sm">
+                      <Lock className="w-2.5 h-2.5" />
+                      Mensajes cifrados de extremo a extremo
                     </span>
                   </div>
 
-                  {/* Messages Flow */}
                   {messages.map((msg) => (
                     <div
                       key={msg.id}
                       className={`flex flex-col ${
                         msg.sender === 'client' ? 'items-end' : 'items-start'
-                      } animate-fadeIn`}
+                      }`}
                     >
                       <div
                         className={`max-w-[85%] rounded-2xl p-3 shadow-md ${
@@ -262,7 +285,7 @@ export default function LiveInteractiveChat() {
                       >
                         <p className="leading-relaxed text-[13px]">{msg.text}</p>
 
-                        {/* Bot Product Card Attachment */}
+                        {/* Bot Card Attachment */}
                         {msg.productCard && (
                           <div className="mt-2.5 rounded-xl bg-[#111B21] p-2.5 border border-white/10 space-y-1.5">
                             <div className="flex items-center justify-between">
@@ -280,25 +303,22 @@ export default function LiveInteractiveChat() {
                               {msg.productCard.desc}
                             </p>
                             <a
-                              href="https://wa.me/5491100000000?text=Hola%20Nico!%20Quiero%20pedir%20este%20servicio."
-                              target="_blank"
-                              rel="noopener noreferrer"
+                              href="/precios"
                               className="block w-full rounded-lg bg-[#00A884] py-1.5 text-center text-[11px] font-bold text-white hover:bg-[#008f6f] transition-colors mt-1"
                             >
-                              👉 Quiero Contratar
+                              Ver Detalle de Contratación
                             </a>
                           </div>
                         )}
 
                         <div className="flex items-center justify-end gap-1 mt-1 text-[10px] text-slate-400">
                           <span>{msg.time}</span>
-                          {msg.sender === 'client' && <span className="text-[#53BDEB]">✓✓</span>}
+                          {msg.sender === 'client' && <CheckCheck className="w-3 h-3 text-[#53BDEB]" />}
                         </div>
                       </div>
                     </div>
                   ))}
 
-                  {/* Typing Indicator Bubble */}
                   {isTyping && (
                     <div className="flex items-start">
                       <div className="rounded-2xl rounded-tl-none bg-[#202C33] px-4 py-2.5 border border-white/5 flex items-center gap-1.5">
@@ -312,13 +332,13 @@ export default function LiveInteractiveChat() {
                   <div ref={messagesEndRef} />
                 </div>
 
-                {/* WhatsApp Chat Input Footer */}
+                {/* Input Footer */}
                 <div className="bg-[#1F2C34] p-3 flex items-center gap-2 border-t border-white/5">
                   <div className="flex-1 rounded-full bg-[#2A3942] px-4 py-2 text-xs text-slate-400">
-                    Escribe un mensaje...
+                    Escribe una consulta...
                   </div>
                   <div className="h-8 w-8 rounded-full bg-[#00A884] flex items-center justify-center text-white text-xs">
-                    ➤
+                    <Send className="w-3.5 h-3.5" />
                   </div>
                 </div>
               </div>

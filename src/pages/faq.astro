@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import FaqSection from '../components/FaqSection.tsx';
+import CtaFooter from '../components/CtaFooter.astro';
+---
+
+<Layout
+  title="Preguntas Frecuentes | NicoGuzman.dev"
+  description="Respuestas sobre tiempos de entrega de 48hs, medios de pago, funcionamiento del bot de WhatsApp y soporte."
+>
+  <Header currentPath="/faq" />
+  <main class="pt-20">
+    <FaqSection client:load />
+    <CtaFooter />
+  </main>
+</Layout>

@@ -3,26 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import HeroTilt from '../components/HeroTilt.tsx';
 import BigMetricBanner from '../components/BigMetricBanner.astro';
-import ServicesDetail from '../components/ServicesDetail.tsx';
+import HomePillars from '../components/HomePillars.tsx';
 import LiveInteractiveChat from '../components/LiveInteractiveChat.tsx';
-import AlternatingFeatures from '../components/AlternatingFeatures.tsx';
-import TransformationComparison from '../components/TransformationComparison.tsx';
-import PricingPlans from '../components/PricingPlans.tsx';
-import FaqSection from '../components/FaqSection.tsx';
 import CtaFooter from '../components/CtaFooter.astro';
 ---
 
-<Layout>
-  <Header />
+<Layout
+  title="NicoGuzman.dev | Digitalización de Negocios · Webs, WhatsApp con IA y Sistemas"
+  description="Páginas web listas en 48 hs, bots de WhatsApp que atienden y cobran las 24 hs y sistemas simples para comercios y profesionales en Argentina."
+>
+  <Header currentPath="/" />
   <main>
     <HeroTilt client:load />
     <BigMetricBanner />
-    <ServicesDetail client:visible />
+    <HomePillars client:visible />
     <LiveInteractiveChat client:visible />
-    <AlternatingFeatures client:visible />
-    <TransformationComparison client:visible />
-    <PricingPlans client:visible />
-    <FaqSection client:visible />
     <CtaFooter />
   </main>
 </Layout>

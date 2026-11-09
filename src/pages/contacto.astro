@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import ContactForm from '../components/ContactForm.tsx';
+import CtaFooter from '../components/CtaFooter.astro';
+---
+
+<Layout
+  title="Contacto | NicoGuzman.dev"
+  description="Contactanos para cotizar tu web en 48hs, bot de WhatsApp con IA o sistema a medida. Atención directa."
+>
+  <Header currentPath="/contacto" />
+  <main class="pt-20">
+    <ContactForm client:load />
+    <CtaFooter />
+  </main>
+</Layout>

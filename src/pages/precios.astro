@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import PricingPlans from '../components/PricingPlans.tsx';
+import FaqSection from '../components/FaqSection.tsx';
+import CtaFooter from '../components/CtaFooter.astro';
+---
+
+<Layout
+  title="Planes & Precios | NicoGuzman.dev"
+  description="Precios claros y en pesos para digitalizar tu negocio: Web Express, WhatsApp con IA y Sistemas a medida."
+>
+  <Header currentPath="/precios" />
+  <main class="pt-20">
+    <PricingPlans client:load />
+    <FaqSection client:visible />
+    <CtaFooter />
+  </main>
+</Layout>
